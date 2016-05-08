@@ -3,130 +3,128 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using TodoListWebApp.DAL;
 using TodoListWebApp.Models;
-using System.Security.Claims;
 
 namespace TodoListWebApp.Controllers
 {
     [Authorize]
-    public class FlexibilityController : Controller
+    public class BodyCompositionController : Controller
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
-        // GET: Flexibilities
+        // GET: BodyComposition
         public ActionResult Index()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var list = db.Flexibilities.Where(a => a.Owner == owner);
-            return View(list.ToList());
+            var currentBodyComp = db.BodyComps.Where(a => a.Owner == owner);
+            return View(currentBodyComp.ToList());
         }
 
-        // GET: Flexibilities/Details/5
+        // GET: BodyComposition/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = db.Flexibilities.Find(id);
+            BodyComposition bodyComposition = db.BodyComps.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            if (flexibility == null || flexibility.Owner != owner)
+            if (bodyComposition == null || bodyComposition.Owner != owner)
             {
                 return HttpNotFound();
             }
-            return View(flexibility);
+            return View(bodyComposition);
         }
 
-        // GET: Flexibilities/Create
+        // GET: BodyComposition/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Flexibilities/Create
+        // POST: BodyComposition/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Owner,SitAndReach,ArmAndShoulder,TrunkLift,Logged")] Flexibility flexibility)
+        public ActionResult Create([Bind(Include = "ID,Owner,Height,Weight,BodyFat,Logged")] BodyComposition bodyComposition)
         {
             if (ModelState.IsValid)
             {
-                flexibility.Owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-                db.Flexibilities.Add(flexibility);
+                bodyComposition.Owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+                db.BodyComps.Add(bodyComposition);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(flexibility);
+            return View(bodyComposition);
         }
 
-        // GET: Flexibilities/Edit/5
+        // GET: BodyComposition/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = db.Flexibilities.Find(id);
+            BodyComposition bodyComposition = db.BodyComps.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (flexibility == null || flexibility.Owner != owner)
+            if (bodyComposition == null || bodyComposition.Owner == owner)
             {
                 return HttpNotFound();
             }
-            return View(flexibility);
+            return View(bodyComposition);
         }
 
-        // POST: Flexibilities/Edit/5
+        // POST: BodyComposition/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Owner,SitAndReach,ArmAndShoulder,TrunkLift,Logged")] Flexibility flexibility)
+        public ActionResult Edit([Bind(Include = "ID,Owner,Height,Weight,BodyFat,Logged")] BodyComposition bodyComposition)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(flexibility).State = EntityState.Modified;
+                db.Entry(bodyComposition).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(flexibility);
+            return View(bodyComposition);
         }
 
-        // GET: Flexibilities/Delete/5
+        // GET: BodyComposition/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = db.Flexibilities.Find(id);
+            BodyComposition bodyComposition = db.BodyComps.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (flexibility == null || flexibility.Owner != owner)
+            if (bodyComposition == null || bodyComposition.Owner == owner)
             {
                 return HttpNotFound();
             }
-            return View(flexibility);
+            return View(bodyComposition);
         }
 
-        // POST: Flexibilities/Delete/5
+        // POST: BodyComposition/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Flexibility flexibility = db.Flexibilities.Find(id);
+            BodyComposition bodyComposition = db.BodyComps.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (flexibility == null || flexibility.Owner != owner)
+            if (bodyComposition == null || bodyComposition.Owner != owner)
             {
                 return HttpNotFound();
             }
-            db.Flexibilities.Remove(flexibility);
+            db.BodyComps.Remove(bodyComposition);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
