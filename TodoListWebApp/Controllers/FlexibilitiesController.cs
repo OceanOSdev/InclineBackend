@@ -19,21 +19,21 @@ namespace TodoListWebApp.Controllers
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
         // GET: Flexibilities
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var list = await db.Flexibilities.ToListAsync();
+            var list = db.Flexibilities.ToList();
             return View(list.Where(a => a.Owner == owner));
         }
 
         // GET: Flexibilities/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = await db.Flexibilities.FindAsync(id);
+            Flexibility flexibility = db.Flexibilities.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             if (flexibility == null || flexibility.Owner != owner)
@@ -54,13 +54,13 @@ namespace TodoListWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Owner,SitAndReach,ArmAndShoulder,TrunkLift,Logged")] Flexibility flexibility)
+        public ActionResult Create([Bind(Include = "ID,Owner,SitAndReach,ArmAndShoulder,TrunkLift,Logged")] Flexibility flexibility)
         {
             if (ModelState.IsValid)
             {
                 flexibility.Owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
                 db.Flexibilities.Add(flexibility);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -68,13 +68,13 @@ namespace TodoListWebApp.Controllers
         }
 
         // GET: Flexibilities/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = await db.Flexibilities.FindAsync(id);
+            Flexibility flexibility = db.Flexibilities.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (flexibility == null || flexibility.Owner != owner)
             {
@@ -88,25 +88,25 @@ namespace TodoListWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Owner,SitAndReach,ArmAndShoulder,TrunkLift,Logged")] Flexibility flexibility)
+        public ActionResult Edit([Bind(Include = "ID,Owner,SitAndReach,ArmAndShoulder,TrunkLift,Logged")] Flexibility flexibility)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(flexibility).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(flexibility);
         }
 
         // GET: Flexibilities/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = await db.Flexibilities.FindAsync(id);
+            Flexibility flexibility = db.Flexibilities.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (flexibility == null || flexibility.Owner != owner)
             {
@@ -118,16 +118,16 @@ namespace TodoListWebApp.Controllers
         // POST: Flexibilities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            Flexibility flexibility = await db.Flexibilities.FindAsync(id);
+            Flexibility flexibility = db.Flexibilities.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (flexibility == null || flexibility.Owner != owner)
             {
                 return HttpNotFound();
             }
             db.Flexibilities.Remove(flexibility);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
