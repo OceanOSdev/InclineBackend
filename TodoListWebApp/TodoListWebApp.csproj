@@ -152,6 +152,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BodyCompositionController.cs" />
+    <Compile Include="Controllers\CardiovascularFitnessController.cs" />
     <Compile Include="Controllers\FlexibilitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OnboardingController.cs" />
@@ -238,6 +239,11 @@
     <Content Include="Views\BodyComposition\Details.cshtml" />
     <Content Include="Views\BodyComposition\Edit.cshtml" />
     <Content Include="Views\BodyComposition\Index.cshtml" />
+    <Content Include="Views\CardiovascularFitness\Create.cshtml" />
+    <Content Include="Views\CardiovascularFitness\Delete.cshtml" />
+    <Content Include="Views\CardiovascularFitness\Details.cshtml" />
+    <Content Include="Views\CardiovascularFitness\Edit.cshtml" />
+    <Content Include="Views\CardiovascularFitness\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201407162351183_InitialCreate.resx">

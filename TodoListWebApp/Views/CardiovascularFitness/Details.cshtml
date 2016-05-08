@@ -1,0 +1,74 @@
+﻿@model TodoListWebApp.Models.CardiovascularFitness
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CardiovascularFitness</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HalfMileTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HalfMileTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pacer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pacer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MileTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MileTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StepTestSteps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StepTestSteps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StepTestHeartRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StepTestHeartRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logged)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
