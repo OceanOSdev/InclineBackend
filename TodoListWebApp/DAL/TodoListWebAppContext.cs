@@ -18,6 +18,12 @@ namespace TodoListWebApp.DAL
         public DbSet<Todo> Todoes { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
 
+        // Health Related DatabaseSets
+        public DbSet<Flexibility> Flexibilities { get; set; }
+        public DbSet<BodyComposition> BodyComps { get; set; }
+        public DbSet<CardiovascularFitness> Cardios { get; set; }
+        public DbSet<MuscularStrengthAndEndurance> MuscularStrengthsAndEndurances { get; set; }
+
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -1,0 +1,58 @@
+﻿@model TodoListWebApp.Models.Flexibility
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Flexibility</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SitAndReach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitAndReach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArmAndShoulder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArmAndShoulder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrunkLift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrunkLift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logged)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

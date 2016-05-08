@@ -1,0 +1,64 @@
+﻿@model TodoListWebApp.Models.Flexibility
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Flexibility</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SitAndReach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SitAndReach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArmAndShoulder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArmAndShoulder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrunkLift)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrunkLift)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logged)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

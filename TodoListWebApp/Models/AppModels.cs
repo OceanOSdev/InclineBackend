@@ -12,6 +12,8 @@ namespace TodoListWebApp.Models
         public string Description { get; set; }
     }
 
+    
+
     // Entity for keeping track of organizations onboarded as customers of the app
     public class Tenant
     {

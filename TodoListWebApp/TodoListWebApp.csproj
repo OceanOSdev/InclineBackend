@@ -151,6 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FlexibilitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OnboardingController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
@@ -163,8 +164,13 @@
     <Compile Include="Migrations\201407162351183_InitialCreate.Designer.cs">
       <DependentUpon>201407162351183_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605080524005_HealthRelatedMigration.cs" />
+    <Compile Include="Migrations\201605080524005_HealthRelatedMigration.Designer.cs">
+      <DependentUpon>201605080524005_HealthRelatedMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppModels.cs" />
+    <Compile Include="Models\HealthModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -221,10 +227,18 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
+    <Content Include="Views\Flexibilities\Create.cshtml" />
+    <Content Include="Views\Flexibilities\Delete.cshtml" />
+    <Content Include="Views\Flexibilities\Details.cshtml" />
+    <Content Include="Views\Flexibilities\Edit.cshtml" />
+    <Content Include="Views\Flexibilities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201407162351183_InitialCreate.resx">
       <DependentUpon>201407162351183_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605080524005_HealthRelatedMigration.resx">
+      <DependentUpon>201605080524005_HealthRelatedMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
