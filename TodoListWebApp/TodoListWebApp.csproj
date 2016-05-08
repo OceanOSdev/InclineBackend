@@ -155,6 +155,7 @@
     <Compile Include="Controllers\CardiovascularFitnessController.cs" />
     <Compile Include="Controllers\FlexibilitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MuscularStrengthAndEnduranceController.cs" />
     <Compile Include="Controllers\OnboardingController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="DAL\TodoListWebAppContext.cs" />
@@ -170,9 +171,14 @@
     <Compile Include="Migrations\201605080524005_HealthRelatedMigration.Designer.cs">
       <DependentUpon>201605080524005_HealthRelatedMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605082232483_ReactionTimes.cs" />
+    <Compile Include="Migrations\201605082232483_ReactionTimes.Designer.cs">
+      <DependentUpon>201605082232483_ReactionTimes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppModels.cs" />
     <Compile Include="Models\HealthModels.cs" />
+    <Compile Include="Models\SkillModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -244,6 +250,11 @@
     <Content Include="Views\CardiovascularFitness\Details.cshtml" />
     <Content Include="Views\CardiovascularFitness\Edit.cshtml" />
     <Content Include="Views\CardiovascularFitness\Index.cshtml" />
+    <Content Include="Views\MuscularStrengthAndEndurance\Create.cshtml" />
+    <Content Include="Views\MuscularStrengthAndEndurance\Delete.cshtml" />
+    <Content Include="Views\MuscularStrengthAndEndurance\Details.cshtml" />
+    <Content Include="Views\MuscularStrengthAndEndurance\Edit.cshtml" />
+    <Content Include="Views\MuscularStrengthAndEndurance\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201407162351183_InitialCreate.resx">
@@ -251,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605080524005_HealthRelatedMigration.resx">
       <DependentUpon>201605080524005_HealthRelatedMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605082232483_ReactionTimes.resx">
+      <DependentUpon>201605082232483_ReactionTimes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

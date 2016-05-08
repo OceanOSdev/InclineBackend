@@ -3,131 +3,127 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using TodoListWebApp.DAL;
 using TodoListWebApp.Models;
-using System.Security.Claims;
 
 namespace TodoListWebApp.Controllers
 {
-    [Authorize]
-    public class FlexibilitiesController : Controller
+    public class MuscularStrengthAndEnduranceController : Controller
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
-        // GET: Flexibilities
+        // GET: MuscularStrengthAndEndurance
         public ActionResult Index()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var list = db.Flexibilities.Where(a => a.Owner == owner);
-            return View(list.ToList());
+            var currentMuscularStrength = db.MuscularStrengthsAndEndurances.Where(a => a.Owner == owner);
+            return View(currentMuscularStrength.ToList());
         }
 
-        // GET: Flexibilities/Details/5
+        // GET: MuscularStrengthAndEndurance/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = db.Flexibilities.Find(id);
+            MuscularStrengthAndEndurance muscularStrengthAndEndurance = db.MuscularStrengthsAndEndurances.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-
-            if (flexibility == null || flexibility.Owner != owner)
+            if (muscularStrengthAndEndurance == null || muscularStrengthAndEndurance.Owner != owner)
             {
                 return HttpNotFound();
             }
-            return View(flexibility);
+            return View(muscularStrengthAndEndurance);
         }
 
-        // GET: Flexibilities/Create
+        // GET: MuscularStrengthAndEndurance/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Flexibilities/Create
+        // POST: MuscularStrengthAndEndurance/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Owner,SitAndReach,ArmAndShoulder,TrunkLift,Logged")] Flexibility flexibility)
+        public ActionResult Create([Bind(Include = "ID,Owner,CurlUps,RightAnglePushUps,MaxBench,MaxLegPress,PullUps,FlexedArmHang,Logged")] MuscularStrengthAndEndurance muscularStrengthAndEndurance)
         {
             if (ModelState.IsValid)
             {
-                flexibility.Owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-                flexibility.Logged = DateTime.Now;
-                db.Flexibilities.Add(flexibility);
+                string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+                muscularStrengthAndEndurance.Owner = owner;
+                muscularStrengthAndEndurance.Logged = DateTime.Now;
+                db.MuscularStrengthsAndEndurances.Add(muscularStrengthAndEndurance);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(flexibility);
+            return View(muscularStrengthAndEndurance);
         }
 
-        // GET: Flexibilities/Edit/5
+        // GET: MuscularStrengthAndEndurance/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = db.Flexibilities.Find(id);
+            MuscularStrengthAndEndurance muscularStrengthAndEndurance = db.MuscularStrengthsAndEndurances.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (flexibility == null || flexibility.Owner != owner)
+            if (muscularStrengthAndEndurance == null || muscularStrengthAndEndurance.Owner != owner)
             {
                 return HttpNotFound();
             }
-            return View(flexibility);
+            return View(muscularStrengthAndEndurance);
         }
 
-        // POST: Flexibilities/Edit/5
+        // POST: MuscularStrengthAndEndurance/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Owner,SitAndReach,ArmAndShoulder,TrunkLift,Logged")] Flexibility flexibility)
+        public ActionResult Edit([Bind(Include = "ID,Owner,CurlUps,RightAnglePushUps,MaxBench,MaxLegPress,PullUps,FlexedArmHang,Logged")] MuscularStrengthAndEndurance muscularStrengthAndEndurance)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(flexibility).State = EntityState.Modified;
+                db.Entry(muscularStrengthAndEndurance).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(flexibility);
+            return View(muscularStrengthAndEndurance);
         }
 
-        // GET: Flexibilities/Delete/5
+        // GET: MuscularStrengthAndEndurance/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Flexibility flexibility = db.Flexibilities.Find(id);
+            MuscularStrengthAndEndurance muscularStrengthAndEndurance = db.MuscularStrengthsAndEndurances.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (flexibility == null || flexibility.Owner != owner)
+            if (muscularStrengthAndEndurance == null || muscularStrengthAndEndurance.Owner != owner)
             {
                 return HttpNotFound();
             }
-            return View(flexibility);
+            return View(muscularStrengthAndEndurance);
         }
 
-        // POST: Flexibilities/Delete/5
+        // POST: MuscularStrengthAndEndurance/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Flexibility flexibility = db.Flexibilities.Find(id);
+            MuscularStrengthAndEndurance muscularStrengthAndEndurance = db.MuscularStrengthsAndEndurances.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (flexibility == null || flexibility.Owner != owner)
-            {
+            if (muscularStrengthAndEndurance == null || muscularStrengthAndEndurance.Owner != null)
                 return HttpNotFound();
-            }
-            db.Flexibilities.Remove(flexibility);
+            db.MuscularStrengthsAndEndurances.Remove(muscularStrengthAndEndurance);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

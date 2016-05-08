@@ -1,0 +1,75 @@
+﻿@model IEnumerable<TodoListWebApp.Models.MuscularStrengthAndEndurance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CurlUps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RightAnglePushUps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxBench)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxLegPress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PullUps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FlexedArmHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Logged)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Owner)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurlUps)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RightAnglePushUps)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxBench)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaxLegPress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PullUps)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlexedArmHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Logged)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

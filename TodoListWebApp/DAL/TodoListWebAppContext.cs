@@ -8,7 +8,13 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.DAL
 {
-   
+   /// <summary>
+   /// The class that holds the database connections and sets
+   /// </summary>
+   /// <remarks>
+   /// The class is named as it is because I was following a tutorial and when i tried
+   /// to change the class name, the whole thing broke on me.
+   /// </remarks>
     public class TodoListWebAppContext : DbContext
     {
         public TodoListWebAppContext() 
@@ -23,6 +29,9 @@ namespace TodoListWebApp.DAL
         public DbSet<BodyComposition> BodyComps { get; set; }
         public DbSet<CardiovascularFitness> Cardios { get; set; }
         public DbSet<MuscularStrengthAndEndurance> MuscularStrengthsAndEndurances { get; set; }
+
+        // Skill Related DatabaseSets
+        public DbSet<ReactionTime> ReactionTimes { get; set; }
 
         public DbSet<User> Users { get; set; }
 

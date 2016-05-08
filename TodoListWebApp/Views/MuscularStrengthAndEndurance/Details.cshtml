@@ -1,0 +1,82 @@
+﻿@model TodoListWebApp.Models.MuscularStrengthAndEndurance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MuscularStrengthAndEndurance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurlUps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurlUps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RightAnglePushUps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RightAnglePushUps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxBench)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxBench)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxLegPress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxLegPress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PullUps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PullUps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlexedArmHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlexedArmHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logged)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

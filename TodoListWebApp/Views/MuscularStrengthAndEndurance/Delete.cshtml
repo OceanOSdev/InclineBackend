@@ -1,0 +1,88 @@
+﻿@model TodoListWebApp.Models.MuscularStrengthAndEndurance
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MuscularStrengthAndEndurance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurlUps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurlUps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RightAnglePushUps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RightAnglePushUps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxBench)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxBench)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxLegPress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxLegPress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PullUps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PullUps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FlexedArmHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlexedArmHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Logged)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Logged)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
