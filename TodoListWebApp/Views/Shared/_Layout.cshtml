@@ -21,6 +21,15 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Health Related <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Body Composition", "Index", "BodyComposition")</li>
+                            <li>@Html.ActionLink("Cardiovascular Fitness", "Index", "CardiovascularFitness")</li>
+                            <li>@Html.ActionLink("Flexibility", "Index", "Flexibilities")</li>
+                            <li>@Html.ActionLink("Muscular Strength and Endurance", "Index", "MuscularStrengthAndEndurance")</li>
+                        </ul>
+                    </li>
 @if (!Request.IsAuthenticated)
 {
                     <li>@Html.ActionLink("Sign Up", "SignUp", "Onboarding")</li>

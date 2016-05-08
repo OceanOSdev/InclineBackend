@@ -154,6 +154,7 @@
     <Compile Include="Controllers\BodyCompositionController.cs" />
     <Compile Include="Controllers\CardiovascularFitnessController.cs" />
     <Compile Include="Controllers\FlexibilitiesController.cs" />
+    <Compile Include="Controllers\HealthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MuscularStrengthAndEnduranceController.cs" />
     <Compile Include="Controllers\OnboardingController.cs" />
@@ -255,6 +256,7 @@
     <Content Include="Views\MuscularStrengthAndEndurance\Details.cshtml" />
     <Content Include="Views\MuscularStrengthAndEndurance\Edit.cshtml" />
     <Content Include="Views\MuscularStrengthAndEndurance\Index.cshtml" />
+    <Content Include="Views\Health\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201407162351183_InitialCreate.resx">
