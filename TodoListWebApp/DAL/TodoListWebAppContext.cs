@@ -11,7 +11,7 @@ namespace TodoListWebApp.DAL
    
     public class TodoListWebAppContext : DbContext
     {
-        public TodoListWebAppContext()
+        public TodoListWebAppContext() 
             : base("TodoListWebAppContext")
         { }
 
