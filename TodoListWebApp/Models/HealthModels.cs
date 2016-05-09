@@ -7,16 +7,25 @@ using System.Web;
 // This file is literally a collection of properties
 namespace TodoListWebApp.Models
 {
+    /// <summary>
+    /// Model's the data relevant to Flexibility
+    /// </summary>
     public class Flexibility
     {
+        /// <summary>The ID </summary>
         public int ID { get; set; }
+        /// <summary>The weird string that identifies the user </summary>
         public string Owner { get; set; }
+        /// <summary>The length in centimeters of the user's sit and reach </summary>
         [DisplayName("Sit & Reach (cm)")]
         public int SitAndReach { get; set; }
+        /// <summary>The height in inches of the arm and shoulder thing. </summary>
         [DisplayName("Arm & Shoulder (in)")]
         public int ArmAndShoulder { get; set; }
+        /// <summary>The height in inches of the trunk lift. </summary>
         [DisplayName("Trunk Lift (in)")]
         public int TrunkLift { get; set; }
+        /// <summary>The time the model was logged. </summary>
         public DateTime Logged { get; set; }
     }
 
