@@ -59,7 +59,7 @@ namespace TodoListWebApp.Controllers
             if (ModelState.IsValid)
             {
                 flexibility.Owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-                flexibility.Logged = DateTime.Now;
+                flexibility.Logged = DateTime.UtcNow;
                 db.Flexibilities.Add(flexibility);
                 db.SaveChanges();
                 return RedirectToAction("Index");

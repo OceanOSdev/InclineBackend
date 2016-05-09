@@ -85,7 +85,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             bodyComposition.Owner = owner;
-            bodyComposition.Logged = DateTime.Now;
+            bodyComposition.Logged = DateTime.UtcNow;
             db.BodyComps.Add(bodyComposition);
             db.SaveChanges();
 

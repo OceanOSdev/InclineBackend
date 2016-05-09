@@ -85,7 +85,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             flexibility.Owner = owner;
-            flexibility.Logged = DateTime.Now;
+            flexibility.Logged = DateTime.UtcNow;
             db.Flexibilities.Add(flexibility);
             db.SaveChanges();
 

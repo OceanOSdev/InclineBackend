@@ -57,7 +57,7 @@ namespace TodoListWebApp.Controllers
             if (ModelState.IsValid)
             {
                 bodyComposition.Owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-                bodyComposition.Logged = DateTime.Now;
+                bodyComposition.Logged = DateTime.UtcNow;
                 db.BodyComps.Add(bodyComposition);
                 db.SaveChanges();
                 return RedirectToAction("Index");

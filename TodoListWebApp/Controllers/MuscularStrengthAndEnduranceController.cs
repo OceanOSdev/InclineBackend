@@ -57,7 +57,7 @@ namespace TodoListWebApp.Controllers
             {
                 string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
                 muscularStrengthAndEndurance.Owner = owner;
-                muscularStrengthAndEndurance.Logged = DateTime.Now;
+                muscularStrengthAndEndurance.Logged = DateTime.UtcNow;
                 db.MuscularStrengthsAndEndurances.Add(muscularStrengthAndEndurance);
                 db.SaveChanges();
                 return RedirectToAction("Index");

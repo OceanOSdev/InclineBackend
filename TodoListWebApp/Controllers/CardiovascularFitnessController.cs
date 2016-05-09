@@ -58,7 +58,7 @@ namespace TodoListWebApp.Controllers
             {
                 string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
                 cardiovascularFitness.Owner = owner;
-                cardiovascularFitness.Logged = DateTime.Now;
+                cardiovascularFitness.Logged = DateTime.UtcNow;
                 db.Cardios.Add(cardiovascularFitness);
                 db.SaveChanges();
                 return RedirectToAction("Index");
