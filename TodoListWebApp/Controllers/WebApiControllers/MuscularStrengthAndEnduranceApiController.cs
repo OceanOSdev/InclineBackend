@@ -14,12 +14,19 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    /// <summary>
+    ///  Handles GETs, DELETEs, PUTs, and POSTs for Muscular Strength and Endurance Data.
+    /// </summary>
     [Authorize]
     public class MuscularStrengthAndEnduranceApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
         // GET: api/MuscularStrengthAndEnduranceApi
+        /// <summary>
+        /// Gets all of the user's Muscular Strength and Endurance data.
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<MuscularStrengthAndEndurance> GetMuscularStrengthsAndEndurances()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -27,6 +34,11 @@ namespace TodoListWebApp.Controllers
         }
 
         // GET: api/MuscularStrengthAndEnduranceApi/5
+        /// <summary>
+        /// Gets a specific Muscular Strength and Endurance data entry.
+        /// </summary>
+        /// <param name="id">The ID of the Muscular Strength and Endurance data entry.</param>
+        /// <returns></returns>
         [ResponseType(typeof(MuscularStrengthAndEndurance))]
         public IHttpActionResult GetMuscularStrengthAndEndurance(int id)
         {
@@ -41,6 +53,12 @@ namespace TodoListWebApp.Controllers
         }
 
         // PUT: api/MuscularStrengthAndEnduranceApi/5
+        /// <summary>
+        /// Replaces a specific Muscular Strength and Endurance data entry.
+        /// </summary>
+        /// <param name="id">The ID of the Muscular Strength and Endurance data entry to replace.</param>
+        /// <param name="muscularStrengthAndEndurance">The new Muscular Strength and Endurance data.</param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutMuscularStrengthAndEndurance(int id, MuscularStrengthAndEndurance muscularStrengthAndEndurance)
         {
@@ -76,6 +94,11 @@ namespace TodoListWebApp.Controllers
         }
 
         // POST: api/MuscularStrengthAndEnduranceApi
+        /// <summary>
+        /// Adds a new Muscular Strength and Endurance data entry to the list.
+        /// </summary>
+        /// <param name="muscularStrengthAndEndurance">The Muscular Strength and Endurance data to add.</param>
+        /// <returns></returns>
         [ResponseType(typeof(MuscularStrengthAndEndurance))]
         public IHttpActionResult PostMuscularStrengthAndEndurance(MuscularStrengthAndEndurance muscularStrengthAndEndurance)
         {
@@ -93,6 +116,11 @@ namespace TodoListWebApp.Controllers
         }
 
         // DELETE: api/MuscularStrengthAndEnduranceApi/5
+        /// <summary>
+        /// Removes a specific Muscular Strength and Endurance data entry.
+        /// </summary>
+        /// <param name="id">The ID of the data entry.</param>
+        /// <returns></returns>
         [ResponseType(typeof(MuscularStrengthAndEndurance))]
         public IHttpActionResult DeleteMuscularStrengthAndEndurance(int id)
         {

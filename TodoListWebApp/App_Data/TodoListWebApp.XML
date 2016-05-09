@@ -481,6 +481,166 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:TodoListWebApp.Controllers.BodyCompositionApiController">
+            <summary>
+            Handles GETs, DELETEs, PUTs, and POSTs for Body Composition Data
+            </summary>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.BodyCompositionApiController.GetBodyComps">
+            <summary>
+            Get all of the user's Body Composition data.
+            </summary>
+            <returns>An IQueryable of BodyComposition</returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.BodyCompositionApiController.GetBodyComposition(System.Int32)">
+            <summary>
+            Get's a specific entry of the user's body composition data.
+            </summary>
+            <param name="id">The ID field of the entry you want.</param>
+            <returns>A specific entry of the user's body composition data.</returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.BodyCompositionApiController.PutBodyComposition(System.Int32,TodoListWebApp.Models.BodyComposition)">
+            <summary>
+            Replaces the data at a specific entry.
+            </summary>
+            <param name="id">The ID of the entry to change.</param>
+            <param name="bodyComposition">The new data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.BodyCompositionApiController.PostBodyComposition(TodoListWebApp.Models.BodyComposition)">
+            <summary>
+            Adds the Body Composition data entry to the list.
+            </summary>
+            <param name="bodyComposition">The body composition data.</param>
+            <returns>The data that was sent.</returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.BodyCompositionApiController.DeleteBodyComposition(System.Int32)">
+            <summary>
+            Deletes a body composition entry.
+            </summary>
+            <param name="id">The ID of the entry.</param>
+            <returns>The data that was removed.</returns>
+        </member>
+        <member name="T:TodoListWebApp.Controllers.CardiovascularFitnessApiController">
+            <summary>
+            Handles GETs, DELETEs, PUTs, and POSTs for Cardiovascular Fitness Data.
+            </summary>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.CardiovascularFitnessApiController.GetCardios">
+            <summary>
+            Gets all of the user's cardiovascular fitness data.
+            </summary>
+            <returns>An IQueryable of the users cardiovascular fitness data.</returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.CardiovascularFitnessApiController.GetCardiovascularFitness(System.Int32)">
+            <summary>
+            Gets a specific entry of the user's cardiovascular fitness data.
+            </summary>
+            <param name="id">The ID of the entry.</param>
+            <returns>The specific data entry.</returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.CardiovascularFitnessApiController.PutCardiovascularFitness(System.Int32,TodoListWebApp.Models.CardiovascularFitness)">
+            <summary>
+            Replaces the data at a specific entry.
+            </summary>
+            <param name="id">The ID of the entry to replace.</param>
+            <param name="cardiovascularFitness">The new data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.CardiovascularFitnessApiController.PostCardiovascularFitness(TodoListWebApp.Models.CardiovascularFitness)">
+            <summary>
+            Adds the cardiovascular fitness data entry to the list.
+            </summary>
+            <param name="cardiovascularFitness">The data to add.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.CardiovascularFitnessApiController.DeleteCardiovascularFitness(System.Int32)">
+            <summary>
+            Deletes a Cardiovascular Fitness data entry.
+            </summary>
+            <param name="id">The ID of the data to delete.</param>
+            <returns></returns>
+        </member>
+        <member name="T:TodoListWebApp.Controllers.FlexibilityApiController">
+            <summary>
+             Handles GETs, DELETEs, PUTs, and POSTs for Flexibility Data.
+            </summary>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.FlexibilityApiController.GetFlexibilities">
+            <summary>
+            Gets all of the users Flexibility data.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.FlexibilityApiController.GetFlexibility(System.Int32)">
+            <summary>
+            Gets a specific data entry.
+            </summary>
+            <param name="id">The ID of the data entry to get.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.FlexibilityApiController.PutFlexibility(System.Int32,TodoListWebApp.Models.Flexibility)">
+            <summary>
+            Replaces a specific entry of the flexibility data.
+            </summary>
+            <param name="id">The ID of entry to replace.</param>
+            <param name="flexibility">The new data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.FlexibilityApiController.PostFlexibility(TodoListWebApp.Models.Flexibility)">
+            <summary>
+            Adds new flexibility data to the list.
+            </summary>
+            <param name="flexibility">The flexibility data to post.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.FlexibilityApiController.DeleteFlexibility(System.Int32)">
+            <summary>
+            Removes a specific flexibility data entry.
+            </summary>
+            <param name="id">The entry to remove.</param>
+            <returns></returns>
+        </member>
+        <member name="T:TodoListWebApp.Controllers.MuscularStrengthAndEnduranceApiController">
+            <summary>
+             Handles GETs, DELETEs, PUTs, and POSTs for Muscular Strength and Endurance Data.
+            </summary>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.MuscularStrengthAndEnduranceApiController.GetMuscularStrengthsAndEndurances">
+            <summary>
+            Gets all of the user's Muscular Strength and Endurance data.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.MuscularStrengthAndEnduranceApiController.GetMuscularStrengthAndEndurance(System.Int32)">
+            <summary>
+            Gets a specific Muscular Strength and Endurance data entry.
+            </summary>
+            <param name="id">The ID of the Muscular Strength and Endurance data entry.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.MuscularStrengthAndEnduranceApiController.PutMuscularStrengthAndEndurance(System.Int32,TodoListWebApp.Models.MuscularStrengthAndEndurance)">
+            <summary>
+            Replaces a specific Muscular Strength and Endurance data entry.
+            </summary>
+            <param name="id">The ID of the Muscular Strength and Endurance data entry to replace.</param>
+            <param name="muscularStrengthAndEndurance">The new Muscular Strength and Endurance data.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.MuscularStrengthAndEnduranceApiController.PostMuscularStrengthAndEndurance(TodoListWebApp.Models.MuscularStrengthAndEndurance)">
+            <summary>
+            Adds a new Muscular Strength and Endurance data entry to the list.
+            </summary>
+            <param name="muscularStrengthAndEndurance">The Muscular Strength and Endurance data to add.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.MuscularStrengthAndEnduranceApiController.DeleteMuscularStrengthAndEndurance(System.Int32)">
+            <summary>
+            Removes a specific Muscular Strength and Endurance data entry.
+            </summary>
+            <param name="id">The ID of the data entry.</param>
+            <returns></returns>
+        </member>
         <member name="T:TodoListWebApp.DAL.TodoListWebAppContext">
             <summary>
             The class that holds the database connections and sets
@@ -492,17 +652,17 @@
         </member>
         <member name="T:TodoListWebApp.Models.Flexibility">
             <summary>
-            Model's the data relevant to Flexibility
+            Models the data relevant to Flexibility.
             </summary>
         </member>
         <member name="P:TodoListWebApp.Models.Flexibility.ID">
-            <summary>The ID </summary>
+            <summary>The ID. </summary>
         </member>
         <member name="P:TodoListWebApp.Models.Flexibility.Owner">
-            <summary>The weird string that identifies the user </summary>
+            <summary>The weird string that identifies the user. </summary>
         </member>
         <member name="P:TodoListWebApp.Models.Flexibility.SitAndReach">
-            <summary>The length in centimeters of the user's sit and reach </summary>
+            <summary>The length in centimeters of the user's sit and reach. </summary>
         </member>
         <member name="P:TodoListWebApp.Models.Flexibility.ArmAndShoulder">
             <summary>The height in inches of the arm and shoulder thing. </summary>
@@ -511,6 +671,90 @@
             <summary>The height in inches of the trunk lift. </summary>
         </member>
         <member name="P:TodoListWebApp.Models.Flexibility.Logged">
+            <summary>The time the model was logged. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.BodyComposition">
+            <summary>
+            Models the data relevant to Body Composition.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BodyComposition.ID">
+            <summary>The ID. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BodyComposition.Owner">
+            <summary>The string identifier for the user. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BodyComposition.Height">
+            <summary>The Height in inches. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BodyComposition.Weight">
+            <summary>The Weight in pounds. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BodyComposition.BodyFat">
+            <summary>The percent body fat. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BodyComposition.Logged">
+            <summary>The time the model was logged. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.CardiovascularFitness">
+            <summary>
+            Models the data relevant to Cardiovascular Fitness.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CardiovascularFitness.ID">
+            <summary>The ID. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CardiovascularFitness.Owner">
+            <summary>The string identifier for the user. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CardiovascularFitness.HalfMileTime">
+            <summary>The time it took to run the half mile. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CardiovascularFitness.Pacer">
+            <summary>The laps completed during the pacer test. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CardiovascularFitness.MileTime">
+            <summary>The time it took to run the mile. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CardiovascularFitness.StepTestSteps">
+            <summary>The amount of steps taken during the 3 minute step test. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CardiovascularFitness.StepTestHeartRate">
+            <summary>The user's heart rate after the 3 minute step test. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CardiovascularFitness.Logged">
+            <summary>The time the model was logged. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.MuscularStrengthAndEndurance">
+            <summary>
+            Models the data relevant to Muscular Strength and Endurance.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.ID">
+            <summary>The ID. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.Owner">
+            <summary>The string identifier. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.CurlUps">
+            <summary>The amount of curl ups completed during the 1 minute curl up test. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.RightAnglePushUps">
+            <summary>The amount of right angle push ups completed during the right angle push up test. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.MaxBench">
+            <summary>The user's max bench in pounds. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.MaxLegPress">
+            <summary>The user's max leg press in pounds. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.PullUps">
+            <summary>The amount of pull ups completed during the pull up test. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.FlexedArmHang">
+            <summary>The duration of time that the user was able to perform the flexed arm hang in seconds. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.Logged">
             <summary>The time the model was logged. </summary>
         </member>
     </members>

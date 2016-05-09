@@ -14,12 +14,19 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    /// <summary>
+    /// Handles GETs, DELETEs, PUTs, and POSTs for Body Composition Data
+    /// </summary>
     [Authorize]
     public class BodyCompositionApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
         // GET: api/BodyCompositionApi
+        /// <summary>
+        /// Get all of the user's Body Composition data.
+        /// </summary>
+        /// <returns>An IQueryable of BodyComposition</returns>
         public IQueryable<BodyComposition> GetBodyComps()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -27,6 +34,11 @@ namespace TodoListWebApp.Controllers
         }
 
         // GET: api/BodyCompositionApi/5
+        /// <summary>
+        /// Get's a specific entry of the user's body composition data.
+        /// </summary>
+        /// <param name="id">The ID field of the entry you want.</param>
+        /// <returns>A specific entry of the user's body composition data.</returns>
         [ResponseType(typeof(BodyComposition))]
         public IHttpActionResult GetBodyComposition(int id)
         {
@@ -41,6 +53,12 @@ namespace TodoListWebApp.Controllers
         }
 
         // PUT: api/BodyCompositionApi/5
+        /// <summary>
+        /// Replaces the data at a specific entry.
+        /// </summary>
+        /// <param name="id">The ID of the entry to change.</param>
+        /// <param name="bodyComposition">The new data.</param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutBodyComposition(int id, BodyComposition bodyComposition)
         {
@@ -71,11 +89,16 @@ namespace TodoListWebApp.Controllers
                     throw;
                 }
             }
-
+            
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/BodyCompositionApi
+        /// <summary>
+        /// Adds the Body Composition data entry to the list.
+        /// </summary>
+        /// <param name="bodyComposition">The body composition data.</param>
+        /// <returns>The data that was sent.</returns>
         [ResponseType(typeof(BodyComposition))]
         public IHttpActionResult PostBodyComposition(BodyComposition bodyComposition)
         {
@@ -93,6 +116,11 @@ namespace TodoListWebApp.Controllers
         }
 
         // DELETE: api/BodyCompositionApi/5
+        /// <summary>
+        /// Deletes a body composition entry.
+        /// </summary>
+        /// <param name="id">The ID of the entry.</param>
+        /// <returns>The data that was removed.</returns>
         [ResponseType(typeof(BodyComposition))]
         public IHttpActionResult DeleteBodyComposition(int id)
         {

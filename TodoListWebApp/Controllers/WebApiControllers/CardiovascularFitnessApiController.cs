@@ -14,12 +14,19 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    /// <summary>
+    /// Handles GETs, DELETEs, PUTs, and POSTs for Cardiovascular Fitness Data.
+    /// </summary>
     [Authorize]
     public class CardiovascularFitnessApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
         // GET: api/CardiovascularFitnessApi
+        /// <summary>
+        /// Gets all of the user's cardiovascular fitness data.
+        /// </summary>
+        /// <returns>An IQueryable of the users cardiovascular fitness data.</returns>
         public IQueryable<CardiovascularFitness> GetCardios()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -27,6 +34,11 @@ namespace TodoListWebApp.Controllers
         }
 
         // GET: api/CardiovascularFitnessApi/5
+        /// <summary>
+        /// Gets a specific entry of the user's cardiovascular fitness data.
+        /// </summary>
+        /// <param name="id">The ID of the entry.</param>
+        /// <returns>The specific data entry.</returns>
         [ResponseType(typeof(CardiovascularFitness))]
         public IHttpActionResult GetCardiovascularFitness(int id)
         {
@@ -41,6 +53,12 @@ namespace TodoListWebApp.Controllers
         }
 
         // PUT: api/CardiovascularFitnessApi/5
+        /// <summary>
+        /// Replaces the data at a specific entry.
+        /// </summary>
+        /// <param name="id">The ID of the entry to replace.</param>
+        /// <param name="cardiovascularFitness">The new data.</param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCardiovascularFitness(int id, CardiovascularFitness cardiovascularFitness)
         {
@@ -76,6 +94,11 @@ namespace TodoListWebApp.Controllers
         }
 
         // POST: api/CardiovascularFitnessApi
+        /// <summary>
+        /// Adds the cardiovascular fitness data entry to the list.
+        /// </summary>
+        /// <param name="cardiovascularFitness">The data to add.</param>
+        /// <returns></returns>
         [ResponseType(typeof(CardiovascularFitness))]
         public IHttpActionResult PostCardiovascularFitness(CardiovascularFitness cardiovascularFitness)
         {
@@ -93,6 +116,11 @@ namespace TodoListWebApp.Controllers
         }
 
         // DELETE: api/CardiovascularFitnessApi/5
+        /// <summary>
+        /// Deletes a Cardiovascular Fitness data entry.
+        /// </summary>
+        /// <param name="id">The ID of the data to delete.</param>
+        /// <returns></returns>
         [ResponseType(typeof(CardiovascularFitness))]
         public IHttpActionResult DeleteCardiovascularFitness(int id)
         {
