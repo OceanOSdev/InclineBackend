@@ -121,7 +121,7 @@ namespace TodoListWebApp.Controllers
         {
             MuscularStrengthAndEndurance muscularStrengthAndEndurance = db.MuscularStrengthsAndEndurances.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (muscularStrengthAndEndurance == null || muscularStrengthAndEndurance.Owner != null)
+            if (muscularStrengthAndEndurance == null || muscularStrengthAndEndurance.Owner != owner)
                 return HttpNotFound();
             db.MuscularStrengthsAndEndurances.Remove(muscularStrengthAndEndurance);
             db.SaveChanges();
