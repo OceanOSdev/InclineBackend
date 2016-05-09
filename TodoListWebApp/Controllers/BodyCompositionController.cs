@@ -107,7 +107,7 @@ namespace TodoListWebApp.Controllers
             }
             BodyComposition bodyComposition = db.BodyComps.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (bodyComposition == null || bodyComposition.Owner == owner)
+            if (bodyComposition == null || bodyComposition.Owner != owner)
             {
                 return HttpNotFound();
             }
