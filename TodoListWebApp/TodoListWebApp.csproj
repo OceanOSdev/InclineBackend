@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201605082232483_ReactionTimes.Designer.cs">
       <DependentUpon>201605082232483_ReactionTimes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605102227551_Decouplement.cs" />
+    <Compile Include="Migrations\201605102227551_Decouplement.Designer.cs">
+      <DependentUpon>201605102227551_Decouplement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppModels.cs" />
     <Compile Include="Models\HealthModels.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605082232483_ReactionTimes.resx">
       <DependentUpon>201605082232483_ReactionTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605102227551_Decouplement.resx">
+      <DependentUpon>201605102227551_Decouplement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

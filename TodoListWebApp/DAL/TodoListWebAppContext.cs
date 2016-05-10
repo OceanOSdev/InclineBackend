@@ -33,6 +33,20 @@ namespace TodoListWebApp.DAL
         // New Health Related DatabaseSets
         public DbSet<SitAndReachModel> SitAndReaches { get; set; }
         public DbSet<ArmAndShoulderModel> ArmAndShoulders { get; set; }
+        public DbSet<TrunkLiftModel> TrunkLifts { get; set; }
+        public DbSet<HeightModel> Heights { get; set; }
+        public DbSet<WeightModel> Weights { get; set; }
+        public DbSet<PercentBodyFatModel> PercentBodyFats { get; set; }
+        public DbSet<HalfMileTimeModel> HalfMileTimes { get; set; }
+        public DbSet<PacerModel> Pacers { get; set; }
+        public DbSet<MileTimeModel> MileTimes { get; set; }
+        public DbSet<StepTestModel> StepTests { get; set; }
+        public DbSet<CurlUpModel> CurlUps { get; set; }
+        public DbSet<RightAnglePushUpModel> RightAnglePushUps { get; set; }
+        public DbSet<MaxBenchModel> MaxBenches { get; set; }
+        public DbSet<MaxLegPressModel> MaxLegPresses { get; set; }
+        public DbSet<PullUpModel> PullUps { get; set; }
+        public DbSet<FlexedArmHangModel> FlexedArmHangs { get; set; }
 
         // Skill Related DatabaseSets
         public DbSet<ReactionTime> ReactionTimes { get; set; }
