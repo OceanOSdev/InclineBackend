@@ -7,6 +7,123 @@ using System.Web;
 // This file is literally a collection of properties
 namespace TodoListWebApp.Models
 {
+    #region Current Models
+    /// <summary>
+    /// The Model that represents a user's sit and reach.
+    /// </summary>
+    public class SitAndReachModel : BaseModel
+    {
+        /// <summary>The length in centimeters of the user's sit and reach. </summary>
+        [DisplayName("Sit & Reach (cm)")]
+        public int SitAndReach { get; set; }
+    }
+
+    /// <summary>
+    /// The Model that represents a user's Arm and Shoulder.
+    /// </summary>
+    public class ArmAndShoulderModel : BaseModel
+    {
+        /// <summary>The height in inches of the arm and shoulder thing. </summary>
+        [DisplayName("Arm & Shoulder (in)")]
+        public int ArmAndShoulder { get; set; }
+    }
+
+    /// <summary>
+    /// The Model that represents a user's trunk lift.
+    /// </summary>
+    public class TrunkLiftModel : BaseModel
+    {
+        /// <summary>The height in inches of the trunk lift. </summary>
+        [DisplayName("Trunk Lift (in)")]
+        public int TrunkLift { get; set; }
+    }
+
+    /// <summary>
+    /// The Model that represents a user's height.
+    /// </summary>
+    public class HeightModel : BaseModel
+    {
+        /// <summary>The Height in inches. </summary>
+        [DisplayName("Height (in)")]
+        public int Height { get; set; }
+    }
+
+    /// <summary>
+    /// The Model that represents a user's weight.
+    /// </summary>
+    public class WeightModel : BaseModel
+    {
+        /// <summary>The Weight in pounds. </summary>
+        [DisplayName("Weight (lbs)")]
+        public int Weight { get; set; }
+    }
+
+    /// <summary>
+    /// The Model that represents a user's percent body fat.
+    /// </summary>
+    public class PercentBodyFatModel : BaseModel
+    {
+        /// <summary>The percent body fat. </summary>
+        [DisplayName("Percent Body Fat")]
+        public decimal BodyFat { get; set; }
+    }
+
+    /// <summary>
+    /// The Model that represents a user's half mile time.
+    /// </summary>
+    public class HalfMileTimeModel : BaseModel
+    {
+        /// <summary>The time it took to run the half mile. </summary>
+        [DisplayName("1/2 Mile Time")]
+        public TimeSpan HalfMileTime { get; set; }
+    }
+
+    /// <summary>
+    /// The model that represents a user's pacer score.
+    /// </summary>
+    public class PacerModel : BaseModel
+    {
+        /// <summary>The laps completed during the pacer test. </summary>
+        [DisplayName("Pacer (Laps)")]
+        public int Pacer { get; set; }
+    }
+
+    /// <summary>
+    /// The model that represents a user's mile time.
+    /// </summary>
+    public class MileTimeModel : BaseModel
+    {
+        /// <summary>The time it took to run the mile. </summary>
+        [DisplayName("Mile Run Time")]
+        public TimeSpan MileTime { get; set; }
+    }
+
+    /// <summary>
+    /// The model that represents a user's step test scores.
+    /// </summary>
+    public class StepTestModel : BaseModel
+    {
+        /// <summary>The amount of steps taken during the 3 minute step test. </summary>
+        [DisplayName("3 Minute Step Test (Steps)")]
+        public int StepTestSteps { get; set; }
+        /// <summary>The user's heart rate after the 3 minute step test. </summary>
+        [DisplayName("Step Test (Heart Rate)")]
+        public int StepTestHeartRate { get; set; }
+    }
+
+
+    /// <summary>
+    /// The model that represents a user's curl ups.
+    /// </summary>
+    public class CurlUpModel : BaseModel
+    {
+        /// <summary>The amount of curl ups completed during the 1 minute curl up test. </summary>
+        [DisplayName("1 Minute Curl Ups")]
+        public int CurlUps { get; set; }
+    }
+    #endregion
+
+    #region Deprecated Models
     /// <summary>
     /// Models the data relevant to Flexibility.
     /// </summary>
@@ -109,4 +226,5 @@ namespace TodoListWebApp.Models
         /// <summary>The time the model was logged. </summary>
         public DateTime Logged { get; set; }
     }
+    #endregion
 }

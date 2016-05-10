@@ -4,6 +4,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TodoListWebApp.Models
 {
+    /// <summary>
+    /// The base class that contains all generic model
+    /// information.
+    /// </summary>
+    public class BaseModel
+    {
+        /// <summary>The Identifier.</summary>
+        public int ID { get; set; }
+        /// <summary>The string that identifies the owner.</summary>
+        public string Owner { get; set; }
+        /// <summary>The date that the data was logged.</summary>
+        public DateTime Logged { get; set; }
+    }
+
     // Entity class for todo entries
     public class Todo
     {
