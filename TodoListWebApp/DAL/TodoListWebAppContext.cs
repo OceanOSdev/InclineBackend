@@ -24,11 +24,15 @@ namespace TodoListWebApp.DAL
         public DbSet<Todo> Todoes { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
 
-        // Health Related DatabaseSets
+        // Health Related DatabaseSets [Deprecated]
         public DbSet<Flexibility> Flexibilities { get; set; }
         public DbSet<BodyComposition> BodyComps { get; set; }
         public DbSet<CardiovascularFitness> Cardios { get; set; }
         public DbSet<MuscularStrengthAndEndurance> MuscularStrengthsAndEndurances { get; set; }
+
+        // New Health Related DatabaseSets
+        public DbSet<SitAndReachModel> SitAndReaches { get; set; }
+        public DbSet<ArmAndShoulderModel> ArmAndShoulders { get; set; }
 
         // Skill Related DatabaseSets
         public DbSet<ReactionTime> ReactionTimes { get; set; }
