@@ -650,6 +650,152 @@
             to change the class name, the whole thing broke on me.
             </remarks>
         </member>
+        <member name="T:TodoListWebApp.Models.BaseModel">
+            <summary>
+            The base class that contains all generic model
+            information.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BaseModel.ID">
+            <summary>The Identifier.</summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BaseModel.Owner">
+            <summary>The string that identifies the owner.</summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.BaseModel.Logged">
+            <summary>The date that the data was logged.</summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.SitAndReachModel">
+            <summary>
+            The Model that represents a user's sit and reach.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.SitAndReachModel.SitAndReach">
+            <summary>The length in centimeters of the user's sit and reach. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.ArmAndShoulderModel">
+            <summary>
+            The Model that represents a user's Arm and Shoulder.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.ArmAndShoulderModel.ArmAndShoulder">
+            <summary>The height in inches of the arm and shoulder thing. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.TrunkLiftModel">
+            <summary>
+            The Model that represents a user's trunk lift.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.TrunkLiftModel.TrunkLift">
+            <summary>The height in inches of the trunk lift. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.HeightModel">
+            <summary>
+            The Model that represents a user's height.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.HeightModel.Height">
+            <summary>The Height in inches. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.WeightModel">
+            <summary>
+            The Model that represents a user's weight.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.WeightModel.Weight">
+            <summary>The Weight in pounds. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.PercentBodyFatModel">
+            <summary>
+            The Model that represents a user's percent body fat.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.PercentBodyFatModel.BodyFat">
+            <summary>The percent body fat. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.HalfMileTimeModel">
+            <summary>
+            The Model that represents a user's half mile time.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.HalfMileTimeModel.HalfMileTime">
+            <summary>The time it took to run the half mile. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.PacerModel">
+            <summary>
+            The model that represents a user's pacer score.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.PacerModel.Pacer">
+            <summary>The laps completed during the pacer test. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.MileTimeModel">
+            <summary>
+            The model that represents a user's mile time.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MileTimeModel.MileTime">
+            <summary>The time it took to run the mile. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.StepTestModel">
+            <summary>
+            The model that represents a user's step test scores.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.StepTestModel.StepTestSteps">
+            <summary>The amount of steps taken during the 3 minute step test. </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.StepTestModel.StepTestHeartRate">
+            <summary>The user's heart rate after the 3 minute step test. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.CurlUpModel">
+            <summary>
+            The model that represents a user's curl ups.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.CurlUpModel.CurlUps">
+            <summary>The amount of curl ups completed during the 1 minute curl up test. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.RightAnglePushUpModel">
+            <summary>
+            The model that represents a user's push up data.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.RightAnglePushUpModel.RightAnglePushUps">
+            <summary>The amount of right angle push ups completed during the right angle push up test. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.MaxBenchModel">
+            <summary>
+            The model that represents a user's max bench.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MaxBenchModel.MaxBench">
+            <summary>The user's max bench in pounds. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.MaxLegPressModel">
+            <summary>
+            The model that represents a user's max leg press.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.MaxLegPressModel.MaxLegPress">
+            <summary>The user's max leg press in pounds. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.PullUpModel">
+            <summary>
+            The model that represents a user's pull ups.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.PullUpModel.PullUps">
+            <summary>The amount of pull ups completed during the pull up test. </summary>
+        </member>
+        <member name="T:TodoListWebApp.Models.FlexedArmHangModel">
+            <summary>
+            The model that represents a user's flexed arm hang.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.FlexedArmHangModel.FlexedArmHang">
+            <summary>The duration of time that the user was able to perform the flexed arm hang in seconds. </summary>
+        </member>
         <member name="T:TodoListWebApp.Models.Flexibility">
             <summary>
             Models the data relevant to Flexibility.

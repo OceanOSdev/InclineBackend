@@ -121,6 +121,56 @@ namespace TodoListWebApp.Models
         [DisplayName("1 Minute Curl Ups")]
         public int CurlUps { get; set; }
     }
+
+    /// <summary>
+    /// The model that represents a user's push up data.
+    /// </summary>
+    public class RightAnglePushUpModel : BaseModel
+    {
+        /// <summary>The amount of right angle push ups completed during the right angle push up test. </summary>
+        [DisplayName("Right Angle Push Ups")]
+        public int RightAnglePushUps { get; set; }
+    }
+
+    /// <summary>
+    /// The model that represents a user's max bench.
+    /// </summary>
+    public class MaxBenchModel : BaseModel
+    {
+        /// <summary>The user's max bench in pounds. </summary>
+        [DisplayName("Max Bench (lbs)")]
+        public int MaxBench { get; set; }
+    }
+
+    /// <summary>
+    /// The model that represents a user's max leg press.
+    /// </summary>
+    public class MaxLegPressModel : BaseModel
+    {
+        /// <summary>The user's max leg press in pounds. </summary>
+        [DisplayName("Max Leg Press (lbs)")]
+        public int MaxLegPress { get; set; }
+    }
+
+    /// <summary>
+    /// The model that represents a user's pull ups.
+    /// </summary>
+    public class PullUpModel : BaseModel
+    {
+        /// <summary>The amount of pull ups completed during the pull up test. </summary>
+        [DisplayName("Pull Ups")]
+        public int PullUps { get; set; }
+    }
+
+    /// <summary>
+    /// The model that represents a user's flexed arm hang.
+    /// </summary>
+    public class FlexedArmHangModel : BaseModel
+    {
+        /// <summary>The duration of time that the user was able to perform the flexed arm hang in seconds. </summary>
+        [DisplayName("Flexed Arm Hang (seconds)")]
+        public TimeSpan FlexedArmHang { get; set; }
+    }
     #endregion
 
     #region Deprecated Models
