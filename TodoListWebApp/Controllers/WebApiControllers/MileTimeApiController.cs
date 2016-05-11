@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class MileTimeApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/MileTimeApi
         public IQueryable<MileTimeModel> GetMileTimes()
         {
-            return db.MileTimes;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.MileTimes.Where(a => a.Owner == owner);
         }
 
         // GET: api/MileTimeApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetMileTimeModel(int id)
         {
             MileTimeModel mileTimeModel = db.MileTimes.Find(id);
-            if (mileTimeModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (mileTimeModel == null || mileTimeModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            mileTimeModel.Owner = owner;
+            mileTimeModel.Logged = DateTime.UtcNow;
             db.MileTimes.Add(mileTimeModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteMileTimeModel(int id)
         {
             MileTimeModel mileTimeModel = db.MileTimes.Find(id);
-            if (mileTimeModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (mileTimeModel == null || mileTimeModel.Owner != owner)
             {
                 return NotFound();
             }

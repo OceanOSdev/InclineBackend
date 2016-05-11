@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class TrunkLiftApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/TrunkLiftApi
         public IQueryable<TrunkLiftModel> GetTrunkLifts()
         {
-            return db.TrunkLifts;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.TrunkLifts.Where(a => a.Owner != owner);
         }
 
         // GET: api/TrunkLiftApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetTrunkLiftModel(int id)
         {
             TrunkLiftModel trunkLiftModel = db.TrunkLifts.Find(id);
-            if (trunkLiftModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (trunkLiftModel == null || trunkLiftModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            trunkLiftModel.Owner = owner;
+            trunkLiftModel.Logged = DateTime.UtcNow;
             db.TrunkLifts.Add(trunkLiftModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteTrunkLiftModel(int id)
         {
             TrunkLiftModel trunkLiftModel = db.TrunkLifts.Find(id);
-            if (trunkLiftModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (trunkLiftModel == null || trunkLiftModel.Owner != owner)
             {
                 return NotFound();
             }

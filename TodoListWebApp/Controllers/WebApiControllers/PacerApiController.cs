@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class PacerApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/PacerApi
         public IQueryable<PacerModel> GetPacers()
         {
-            return db.Pacers;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.Pacers.Where(a => a.Owner == owner);
         }
 
         // GET: api/PacerApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetPacerModel(int id)
         {
             PacerModel pacerModel = db.Pacers.Find(id);
-            if (pacerModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (pacerModel == null || pacerModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            pacerModel.Owner = owner;
+            pacerModel.Logged = DateTime.UtcNow;
             db.Pacers.Add(pacerModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeletePacerModel(int id)
         {
             PacerModel pacerModel = db.Pacers.Find(id);
-            if (pacerModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (pacerModel == null || pacerModel.Owner != owner)
             {
                 return NotFound();
             }

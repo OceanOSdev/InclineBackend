@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class CurlUpApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/CurlUpApi
         public IQueryable<CurlUpModel> GetCurlUps()
         {
-            return db.CurlUps;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.CurlUps.Where(a => a.Owner == owner);
         }
 
         // GET: api/CurlUpApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetCurlUpModel(int id)
         {
             CurlUpModel curlUpModel = db.CurlUps.Find(id);
-            if (curlUpModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (curlUpModel == null || curlUpModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            curlUpModel.Owner = owner;
+            curlUpModel.Logged = DateTime.UtcNow;
             db.CurlUps.Add(curlUpModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteCurlUpModel(int id)
         {
             CurlUpModel curlUpModel = db.CurlUps.Find(id);
-            if (curlUpModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (curlUpModel == null || curlUpModel.Owner != owner)
             {
                 return NotFound();
             }

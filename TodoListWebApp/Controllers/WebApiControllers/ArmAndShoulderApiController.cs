@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class ArmAndShoulderApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/ArmAndShoulderApi
         public IQueryable<ArmAndShoulderModel> GetArmAndShoulders()
         {
-            return db.ArmAndShoulders;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.ArmAndShoulders.Where(a => a.Owner == owner);
         }
 
         // GET: api/ArmAndShoulderApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetArmAndShoulderModel(int id)
         {
             ArmAndShoulderModel armAndShoulderModel = db.ArmAndShoulders.Find(id);
-            if (armAndShoulderModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (armAndShoulderModel == null || armAndShoulderModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            armAndShoulderModel.Logged = DateTime.UtcNow;
+            armAndShoulderModel.Owner = owner;
             db.ArmAndShoulders.Add(armAndShoulderModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteArmAndShoulderModel(int id)
         {
             ArmAndShoulderModel armAndShoulderModel = db.ArmAndShoulders.Find(id);
-            if (armAndShoulderModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (armAndShoulderModel == null || armAndShoulderModel.Owner != owner)
             {
                 return NotFound();
             }

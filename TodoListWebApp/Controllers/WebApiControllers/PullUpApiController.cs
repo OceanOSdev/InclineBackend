@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class PullUpApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/PullUpApi
         public IQueryable<PullUpModel> GetPullUps()
         {
-            return db.PullUps;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.PullUps.Where(a => a.Owner == owner);
         }
 
         // GET: api/PullUpApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetPullUpModel(int id)
         {
             PullUpModel pullUpModel = db.PullUps.Find(id);
-            if (pullUpModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (pullUpModel == null || pullUpModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            pullUpModel.Owner = owner;
+            pullUpModel.Logged = DateTime.UtcNow;
             db.PullUps.Add(pullUpModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeletePullUpModel(int id)
         {
             PullUpModel pullUpModel = db.PullUps.Find(id);
-            if (pullUpModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (pullUpModel == null || pullUpModel.Owner != owner)
             {
                 return NotFound();
             }

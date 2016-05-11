@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class SitAndReachApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/SitAndReachApi
         public IQueryable<SitAndReachModel> GetSitAndReaches()
         {
-            return db.SitAndReaches;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.SitAndReaches.Where(a => a.Owner == owner);
         }
 
         // GET: api/SitAndReachApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetSitAndReachModel(int id)
         {
             SitAndReachModel sitAndReachModel = db.SitAndReaches.Find(id);
-            if (sitAndReachModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (sitAndReachModel == null || sitAndReachModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            sitAndReachModel.Owner = owner;
+            sitAndReachModel.Logged = DateTime.UtcNow;
             db.SitAndReaches.Add(sitAndReachModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteSitAndReachModel(int id)
         {
             SitAndReachModel sitAndReachModel = db.SitAndReaches.Find(id);
-            if (sitAndReachModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (sitAndReachModel == null || sitAndReachModel.Owner != owner)
             {
                 return NotFound();
             }

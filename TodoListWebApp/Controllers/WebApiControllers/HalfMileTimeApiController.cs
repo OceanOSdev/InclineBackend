@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class HalfMileTimeApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/HalfMileTimeApi
         public IQueryable<HalfMileTimeModel> GetHalfMileTimes()
         {
-            return db.HalfMileTimes;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.HalfMileTimes.Where(item => item.Owner == owner);
         }
 
         // GET: api/HalfMileTimeApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetHalfMileTimeModel(int id)
         {
             HalfMileTimeModel halfMileTimeModel = db.HalfMileTimes.Find(id);
-            if (halfMileTimeModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (halfMileTimeModel == null || halfMileTimeModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            halfMileTimeModel.Owner = owner;
+            halfMileTimeModel.Logged = DateTime.UtcNow;
             db.HalfMileTimes.Add(halfMileTimeModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteHalfMileTimeModel(int id)
         {
             HalfMileTimeModel halfMileTimeModel = db.HalfMileTimes.Find(id);
-            if (halfMileTimeModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (halfMileTimeModel == null || halfMileTimeModel.Owner != owner)
             {
                 return NotFound();
             }

@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class PercentBodyFatApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/PercentBodyFatApi
         public IQueryable<PercentBodyFatModel> GetPercentBodyFats()
         {
-            return db.PercentBodyFats;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.PercentBodyFats.Where(a => a.Owner == owner);
         }
 
         // GET: api/PercentBodyFatApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetPercentBodyFatModel(int id)
         {
             PercentBodyFatModel percentBodyFatModel = db.PercentBodyFats.Find(id);
-            if (percentBodyFatModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (percentBodyFatModel == null || percentBodyFatModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -91,7 +95,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeletePercentBodyFatModel(int id)
         {
             PercentBodyFatModel percentBodyFatModel = db.PercentBodyFats.Find(id);
-            if (percentBodyFatModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (percentBodyFatModel == null || percentBodyFatModel.Owner != owner)
             {
                 return NotFound();
             }

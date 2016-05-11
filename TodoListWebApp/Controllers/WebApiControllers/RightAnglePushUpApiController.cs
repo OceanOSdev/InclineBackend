@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class RightAnglePushUpApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/RightAnglePushUpApi
         public IQueryable<RightAnglePushUpModel> GetRightAnglePushUps()
         {
-            return db.RightAnglePushUps;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.RightAnglePushUps.Where(a => a.Owner == owner);
         }
 
         // GET: api/RightAnglePushUpApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetRightAnglePushUpModel(int id)
         {
             RightAnglePushUpModel rightAnglePushUpModel = db.RightAnglePushUps.Find(id);
-            if (rightAnglePushUpModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (rightAnglePushUpModel == null || rightAnglePushUpModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            rightAnglePushUpModel.Owner = owner;
+            rightAnglePushUpModel.Logged = DateTime.UtcNow;
             db.RightAnglePushUps.Add(rightAnglePushUpModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteRightAnglePushUpModel(int id)
         {
             RightAnglePushUpModel rightAnglePushUpModel = db.RightAnglePushUps.Find(id);
-            if (rightAnglePushUpModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (rightAnglePushUpModel == null || rightAnglePushUpModel.Owner != owner)
             {
                 return NotFound();
             }

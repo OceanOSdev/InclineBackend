@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class MaxLegPressApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/MaxLegPressApi
         public IQueryable<MaxLegPressModel> GetMaxLegPresses()
         {
-            return db.MaxLegPresses;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.MaxLegPresses.Where(a => a.Owner == owner);
         }
 
         // GET: api/MaxLegPressApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetMaxLegPressModel(int id)
         {
             MaxLegPressModel maxLegPressModel = db.MaxLegPresses.Find(id);
-            if (maxLegPressModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (maxLegPressModel == null || maxLegPressModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            maxLegPressModel.Owner = owner;
+            maxLegPressModel.Logged = DateTime.UtcNow;
             db.MaxLegPresses.Add(maxLegPressModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteMaxLegPressModel(int id)
         {
             MaxLegPressModel maxLegPressModel = db.MaxLegPresses.Find(id);
-            if (maxLegPressModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (maxLegPressModel == null || maxLegPressModel.Owner != owner)
             {
                 return NotFound();
             }

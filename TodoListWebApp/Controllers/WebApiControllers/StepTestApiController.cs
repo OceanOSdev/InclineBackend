@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
 using TodoListWebApp.DAL;
@@ -13,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [Authorize]
     public class StepTestApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
@@ -20,7 +22,8 @@ namespace TodoListWebApp.Controllers
         // GET: api/StepTestApi
         public IQueryable<StepTestModel> GetStepTests()
         {
-            return db.StepTests;
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return db.StepTests.Where(a => a.Owner == owner);
         }
 
         // GET: api/StepTestApi/5
@@ -28,7 +31,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult GetStepTestModel(int id)
         {
             StepTestModel stepTestModel = db.StepTests.Find(id);
-            if (stepTestModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (stepTestModel == null || stepTestModel.Owner != owner)
             {
                 return NotFound();
             }
@@ -79,7 +83,9 @@ namespace TodoListWebApp.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            stepTestModel.Owner = owner;
+            stepTestModel.Logged = DateTime.UtcNow;
             db.StepTests.Add(stepTestModel);
             db.SaveChanges();
 
@@ -91,7 +97,8 @@ namespace TodoListWebApp.Controllers
         public IHttpActionResult DeleteStepTestModel(int id)
         {
             StepTestModel stepTestModel = db.StepTests.Find(id);
-            if (stepTestModel == null)
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (stepTestModel == null || stepTestModel.Owner != owner)
             {
                 return NotFound();
             }
