@@ -29,7 +29,6 @@ namespace TodoListWebApp
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions { });
 
-            #region Revert To This If Need Be
             app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions
                 {
@@ -79,25 +78,15 @@ namespace TodoListWebApp
                         }
                     }
                 });
-            #endregion
-            /*
+
+
             app.UseWindowsAzureActiveDirectoryBearerAuthentication(
                 new WindowsAzureActiveDirectoryBearerAuthenticationOptions
                 {
-                    Audience = ConfigurationManager.AppSettings["ida:Audience"],
-                    
-                    Tenant = ConfigurationManager.AppSettings["ida:Tenant"],
-                    TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters() { ValidateIssuer = false }
+                    Audience = "https://thomastnflive.onmicrosoft.com/Incline",
+                    Tenant = "thomastnflive.onmicrosoft.com",
+                    AuthenticationType = "OAuth2Bearer",
                 });
-                */
-
-            app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-        new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-        {
-            Audience = "https://thomastnflive.onmicrosoft.com/Incline",
-            Tenant = "thomastnflive.onmicrosoft.com",
-            AuthenticationType = "OAuth2Bearer",
-        });
         }
 
     }
