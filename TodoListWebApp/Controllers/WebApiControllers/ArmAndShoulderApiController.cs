@@ -14,6 +14,9 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Authorize]
     public class ArmAndShoulderApiController : ApiController
     {

@@ -17,7 +17,7 @@ namespace TodoListWebApp.Controllers
     /// <summary>
     ///  Handles GETs, DELETEs, PUTs, and POSTs for Flexibility Data.
     /// </summary>
-    [Authorize]
+    [Authorize]    
     public class FlexibilityApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();

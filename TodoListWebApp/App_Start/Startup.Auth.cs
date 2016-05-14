@@ -11,7 +11,8 @@ using System.Configuration;
 using TodoListWebApp.DAL;
 using System.IdentityModel.Claims;
 using System.IdentityModel.Tokens;
-
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.ActiveDirectory;
 namespace TodoListWebApp
 {
 
@@ -19,7 +20,7 @@ namespace TodoListWebApp
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
         public void ConfigureAuth(IAppBuilder app)
-        {         
+        {
             string ClientId = ConfigurationManager.AppSettings["ida:ClientID"];
             //fixed address for multitenant apps in the public cloud
             string Authority = "https://login.microsoftonline.com/common/";
@@ -28,6 +29,7 @@ namespace TodoListWebApp
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions { });
 
+            #region Revert To This If Need Be
             app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions
                 {
@@ -46,7 +48,7 @@ namespace TodoListWebApp
                             // This ensures that the address used for sign in and sign out is picked up dynamically from the request
                             // this allows you to deploy your app (to Azure Web Sites, for example)without having to change settings
                             // Remember that the base URL of the address used here must be provisioned in Azure AD beforehand.
-                            string appBaseUrl = context.Request.Scheme + "://" + context.Request.Host + context.Request.PathBase;                         
+                            string appBaseUrl = context.Request.Scheme + "://" + context.Request.Host + context.Request.PathBase;
                             context.ProtocolMessage.RedirectUri = appBaseUrl;
                             context.ProtocolMessage.PostLogoutRedirectUri = appBaseUrl;
                             return Task.FromResult(0);
@@ -63,10 +65,10 @@ namespace TodoListWebApp
                                 // the caller comes from an admin-consented, recorded issuer
                                 (db.Tenants.FirstOrDefault(a => ((a.IssValue == issuer) && (a.AdminConsented))) == null)
                                 // the caller is recorded in the db of users who went through the individual onboardoing
-                                && (db.Users.FirstOrDefault(b =>((b.UPN == UPN) && (b.TenantID == tenantID))) == null)
+                                && (db.Users.FirstOrDefault(b => ((b.UPN == UPN) && (b.TenantID == tenantID))) == null)
                                 )
                                 // the caller was neither from a trusted issuer or a registered user - throw to block the authentication flow
-                                throw new SecurityTokenValidationException();                            
+                                throw new SecurityTokenValidationException();
                             return Task.FromResult(0);
                         },
                         AuthenticationFailed = (context) =>
@@ -77,7 +79,25 @@ namespace TodoListWebApp
                         }
                     }
                 });
+            #endregion
+            /*
+            app.UseWindowsAzureActiveDirectoryBearerAuthentication(
+                new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+                {
+                    Audience = ConfigurationManager.AppSettings["ida:Audience"],
+                    
+                    Tenant = ConfigurationManager.AppSettings["ida:Tenant"],
+                    TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters() { ValidateIssuer = false }
+                });
+                */
 
+            app.UseWindowsAzureActiveDirectoryBearerAuthentication(
+        new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+        {
+            Audience = "https://thomastnflive.onmicrosoft.com/Incline",
+            Tenant = "thomastnflive.onmicrosoft.com",
+            AuthenticationType = "OAuth2Bearer",
+        });
         }
 
     }

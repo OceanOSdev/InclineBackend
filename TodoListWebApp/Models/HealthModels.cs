@@ -19,7 +19,7 @@ namespace TodoListWebApp.Models
     }
 
     /// <summary>
-    /// The Model that represents a user's Arm and Shoulder.
+    /// The Model that represents a user's Arm and Shoulder Measurement.
     /// </summary>
     public class ArmAndShoulderModel : BaseModel
     {

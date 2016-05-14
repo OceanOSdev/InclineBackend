@@ -641,6 +641,11 @@
             <param name="id">The ID of the data entry.</param>
             <returns></returns>
         </member>
+        <member name="T:TodoListWebApp.Controllers.ArmAndShoulderApiController">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:TodoListWebApp.DAL.TodoListWebAppContext">
             <summary>
             The class that holds the database connections and sets
@@ -675,7 +680,7 @@
         </member>
         <member name="T:TodoListWebApp.Models.ArmAndShoulderModel">
             <summary>
-            The Model that represents a user's Arm and Shoulder.
+            The Model that represents a user's Arm and Shoulder Measurement.
             </summary>
         </member>
         <member name="P:TodoListWebApp.Models.ArmAndShoulderModel.ArmAndShoulder">

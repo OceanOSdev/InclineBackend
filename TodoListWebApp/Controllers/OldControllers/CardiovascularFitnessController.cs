@@ -22,6 +22,7 @@ namespace TodoListWebApp.Controllers
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             var currentUserCardio = db.Cardios.Where(a => a.Owner == owner);
+            //return new HttpStatusCodeResult(418);
             return View(currentUserCardio.ToList());
         }
 
