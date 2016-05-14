@@ -14,6 +14,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
+    [HostAuthentication("OAuth2Bearer")]
     [Authorize]
     public class RightAnglePushUpApiController : ApiController
     {

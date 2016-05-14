@@ -17,6 +17,7 @@ namespace TodoListWebApp.Controllers
     /// <summary>
     /// 
     /// </summary>
+    [HostAuthentication("OAuth2Bearer")]
     [Authorize]
     public class ArmAndShoulderApiController : ApiController
     {
