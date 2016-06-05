@@ -40,3 +40,54 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+/* brand colors */
+.secondary-color {
+    color: #1b98e0;
+}
+.primary-color {
+    color: #13293d;
+}
+
+/* Boot strap overrides */
+
+.navbar-inverse {
+    background-color: #13293d;
+    border-color: #13293d;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #1b98e0;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #1b98e0;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #fff;
+    background-color: transparent;
+}
+
+.navbar-brand {
+    font-weight: 700;    
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.dropdown-menu {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
