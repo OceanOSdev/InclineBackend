@@ -13,6 +13,10 @@ using System.IdentityModel.Claims;
 using System.IdentityModel.Tokens;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.ActiveDirectory;
+using Microsoft.Owin.Security.Infrastructure;
+using Microsoft.Owin.Security.Jwt;
+using Microsoft.Owin.Security.OAuth;
+
 namespace TodoListWebApp
 {
 
@@ -86,8 +90,26 @@ namespace TodoListWebApp
                     Audience = "https://thomastnflive.onmicrosoft.com/Incline",
                     Tenant = "thomastnflive.onmicrosoft.com",
                     AuthenticationType = "OAuth2Bearer",
+                    TokenValidationParameters = new TokenValidationParameters() { SaveSigninToken = true }
                 });
+
+            //app.UseOAuthBearerAuthentication(options =>
+            //{
+            //    options
+            //    options.Audience = "https://thomastnflive.onmicrosoft.com/Incline";
+            //    options.Authority = "https://login.microsoftonline.com/common";
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidIssuers = myListOfValidIssuers;
+            //}
+
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
+            {
+               
+            });
         }
 
+
     }
+
 }
