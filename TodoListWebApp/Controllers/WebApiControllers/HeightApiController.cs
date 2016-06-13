@@ -9,12 +9,13 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Description;
+using TodoListWebApp.AuthorizationFilters;
 using TodoListWebApp.DAL;
 using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
-    [HostAuthentication("OAuth2Bearer")]
+    [HostAuthentication("AADBearer")]
     [Authorize]
     public class HeightApiController : ApiController
     {

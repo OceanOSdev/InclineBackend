@@ -15,7 +15,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.Controllers
 {
-    [HostAuthentication("OAuth2Bearer")]
+    [HostAuthentication("AADBearer")]
     [Authorize]
     public class WeightApiController : ApiController
     {

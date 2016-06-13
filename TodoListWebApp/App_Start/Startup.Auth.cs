@@ -89,8 +89,8 @@ namespace TodoListWebApp
                 {
                     Audience = "https://thomastnflive.onmicrosoft.com/Incline",
                     Tenant = "thomastnflive.onmicrosoft.com",
-                    AuthenticationType = "OAuth2Bearer",
-                    TokenValidationParameters = new TokenValidationParameters() { SaveSigninToken = true }
+                    AuthenticationType = "AADBearer",
+                    TokenValidationParameters = new TokenValidationParameters() { SaveSigninToken = true, ValidateIssuer = false }
                 });
 
             //app.UseOAuthBearerAuthentication(options =>
@@ -103,10 +103,10 @@ namespace TodoListWebApp
             //        ValidIssuers = myListOfValidIssuers;
             //}
 
-            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
-            {
+            //app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
+            //{
                
-            });
+            //});
         }
 
 
