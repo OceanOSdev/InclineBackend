@@ -15,7 +15,7 @@ using TodoListWebApp.Models;
 namespace TodoListWebApp.Controllers
 {
     /// <summary>
-    /// 
+    /// Represents the measurements related to Arm and Shoulders.
     /// </summary>
     [HostAuthentication("AADBearer")]
     [Authorize]
@@ -24,6 +24,10 @@ namespace TodoListWebApp.Controllers
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
         // GET: api/ArmAndShoulderApi
+        /// <summary>
+        /// Returns a list of the user's Arm and Shoulders scores.
+        /// </summary>
+        /// <returns>A list of the user's Arm and Shoulders scores.</returns>
         public IQueryable<ArmAndShoulderModel> GetArmAndShoulders()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -31,6 +35,14 @@ namespace TodoListWebApp.Controllers
         }
 
         // GET: api/ArmAndShoulderApi/5
+        /// <summary>
+        /// Queries the DBSet for an Arm and Shoulder measurement with the corresponding ID.
+        /// </summary>
+        /// <param name="id">The id of the specific Arm and Shoulders measurement</param>
+        /// <returns>
+        /// JSON representation of the measurement, or returns a 404 if either the
+        /// measurement does not exist or doesn't belong to the authenticated user.
+        /// </returns>
         [ResponseType(typeof(ArmAndShoulderModel))]
         public IHttpActionResult GetArmAndShoulderModel(int id)
         {
@@ -45,6 +57,16 @@ namespace TodoListWebApp.Controllers
         }
 
         // PUT: api/ArmAndShoulderApi/5
+        /// <summary>
+        /// Updates a specified entry of the Arm and Shoulders measurements.
+        /// </summary>
+        /// <param name="id">The id of the measurement to update.</param>
+        /// <param name="armAndShoulderModel">The new Arm and Shoulders Measurement.</param>
+        /// <returns>
+        /// A bad request if either the model is not valid or if the entry to be updated does not belong
+        /// to the user performing the update request. Otherwise No content. Well, unless there is a 
+        /// concurrecy issue, in which case, RIP request.
+        /// </returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutArmAndShoulderModel(int id, ArmAndShoulderModel armAndShoulderModel)
         {
@@ -80,6 +102,13 @@ namespace TodoListWebApp.Controllers
         }
 
         // POST: api/ArmAndShoulderApi
+        /// <summary>
+        /// Creates a new Arm and Shoulders measurement.
+        /// </summary>
+        /// <param name="armAndShoulderModel">The measurement to add.</param>
+        /// <returns>
+        /// The JSON of the measurement if it succeeded. Otherwise a bad request.
+        /// </returns>
         [ResponseType(typeof(ArmAndShoulderModel))]
         public IHttpActionResult PostArmAndShoulderModel(ArmAndShoulderModel armAndShoulderModel)
         {
@@ -97,6 +126,15 @@ namespace TodoListWebApp.Controllers
         }
 
         // DELETE: api/ArmAndShoulderApi/5
+        /// <summary>
+        /// Deletes a specified entry.
+        /// </summary>
+        /// <param name="id">The id of the entry to delete.</param>
+        /// <returns>
+        /// Json representation of the entry that was deleted.
+        /// If the entry does not exist or is not owned by the requester,
+        /// then a 404 will be returned.
+        /// </returns>
         [ResponseType(typeof(ArmAndShoulderModel))]
         public IHttpActionResult DeleteArmAndShoulderModel(int id)
         {
