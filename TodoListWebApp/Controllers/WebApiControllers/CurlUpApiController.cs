@@ -21,6 +21,10 @@ namespace TodoListWebApp.Controllers
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
         // GET: api/CurlUpApi
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<CurlUpModel> GetCurlUps()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;

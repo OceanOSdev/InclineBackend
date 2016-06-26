@@ -643,8 +643,62 @@
         </member>
         <member name="T:TodoListWebApp.Controllers.ArmAndShoulderApiController">
             <summary>
+            Represents the measurements related to Arm and Shoulders.
+            </summary>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.ArmAndShoulderApiController.GetArmAndShoulders">
+            <summary>
+            Returns a list of the user's Arm and Shoulders scores.
+            </summary>
+            <returns>A list of the user's Arm and Shoulders scores.</returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.ArmAndShoulderApiController.GetArmAndShoulderModel(System.Int32)">
+            <summary>
+            Queries the DBSet for an Arm and Shoulder measurement with the corresponding ID.
+            </summary>
+            <param name="id">The id of the specific Arm and Shoulders measurement</param>
+            <returns>
+            JSON representation of the measurement, or returns a 404 if either the
+            measurement does not exist or doesn't belong to the authenticated user.
+            </returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.ArmAndShoulderApiController.PutArmAndShoulderModel(System.Int32,TodoListWebApp.Models.ArmAndShoulderModel)">
+            <summary>
+            Updates a specified entry of the Arm and Shoulders measurements.
+            </summary>
+            <param name="id">The id of the measurement to update.</param>
+            <param name="armAndShoulderModel">The new Arm and Shoulders Measurement.</param>
+            <returns>
+            A bad request if either the model is not valid or if the entry to be updated does not belong
+            to the user performing the update request. Otherwise No content. Well, unless there is a 
+            concurrecy issue, in which case, RIP request.
+            </returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.ArmAndShoulderApiController.PostArmAndShoulderModel(TodoListWebApp.Models.ArmAndShoulderModel)">
+            <summary>
+            Creates a new Arm and Shoulders measurement.
+            </summary>
+            <param name="armAndShoulderModel">The measurement to add.</param>
+            <returns>
+            The JSON of the measurement if it succeeded. Otherwise a bad request.
+            </returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.ArmAndShoulderApiController.DeleteArmAndShoulderModel(System.Int32)">
+            <summary>
+            Deletes a specified entry.
+            </summary>
+            <param name="id">The id of the entry to delete.</param>
+            <returns>
+            Json representation of the entry that was deleted.
+            If the entry does not exist or is not owned by the requester,
+            then a 404 will be returned.
+            </returns>
+        </member>
+        <member name="M:TodoListWebApp.Controllers.CurlUpApiController.GetCurlUps">
+            <summary>
             
             </summary>
+            <returns></returns>
         </member>
         <member name="T:TodoListWebApp.DAL.TodoListWebAppContext">
             <summary>
