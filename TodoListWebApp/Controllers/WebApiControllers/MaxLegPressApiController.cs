@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<MaxLegPressModel> GetMaxLegPresses()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.MaxLegPresses.Where(a => a.Owner == owner);
+            return db.MaxLegPresses.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/MaxLegPressApi/5

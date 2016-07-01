@@ -28,7 +28,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<CurlUpModel> GetCurlUps()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.CurlUps.Where(a => a.Owner == owner);
+            return db.CurlUps.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/CurlUpApi/5

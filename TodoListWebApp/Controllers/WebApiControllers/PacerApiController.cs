@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<PacerModel> GetPacers()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.Pacers.Where(a => a.Owner == owner);
+            return db.Pacers.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/PacerApi/5

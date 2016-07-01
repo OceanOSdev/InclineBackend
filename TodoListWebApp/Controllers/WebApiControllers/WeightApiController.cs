@@ -25,7 +25,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<WeightModel> GetWeights()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.Weights.Where(a => a.Owner == owner);
+            return db.Weights.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/WeightApi/5

@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<FlexedArmHangModel> GetFlexedArmHangs()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.FlexedArmHangs.Where(a => a.Owner == owner);
+            return db.FlexedArmHangs.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/FlexedArmHangApi/5

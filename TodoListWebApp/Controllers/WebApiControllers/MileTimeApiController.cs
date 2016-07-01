@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<MileTimeModel> GetMileTimes()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.MileTimes.Where(a => a.Owner == owner);
+            return db.MileTimes.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/MileTimeApi/5

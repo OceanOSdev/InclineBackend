@@ -45,7 +45,7 @@ namespace TodoListWebApp.AuthorizationFilters
                     ))
                 {
                     actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized,
-                        string.Format("The user {0} has not been onboarded. Sign up and try again", UPN));
+                        $"The user {UPN} has not been onboarded. Sign up and try again");
                 }
             }
         }

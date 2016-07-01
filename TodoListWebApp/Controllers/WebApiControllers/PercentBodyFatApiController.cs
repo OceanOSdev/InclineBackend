@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<PercentBodyFatModel> GetPercentBodyFats()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.PercentBodyFats.Where(a => a.Owner == owner);
+            return db.PercentBodyFats.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/PercentBodyFatApi/5

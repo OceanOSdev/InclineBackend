@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<HalfMileTimeModel> GetHalfMileTimes()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.HalfMileTimes.Where(item => item.Owner == owner);
+            return db.HalfMileTimes.Where(item => item.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/HalfMileTimeApi/5

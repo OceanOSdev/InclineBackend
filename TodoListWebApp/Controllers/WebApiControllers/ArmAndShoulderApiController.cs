@@ -31,7 +31,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<ArmAndShoulderModel> GetArmAndShoulders()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.ArmAndShoulders.Where(a => a.Owner == owner);
+            return db.ArmAndShoulders.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/ArmAndShoulderApi/5

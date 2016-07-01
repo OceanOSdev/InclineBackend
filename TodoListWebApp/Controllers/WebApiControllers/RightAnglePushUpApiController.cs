@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<RightAnglePushUpModel> GetRightAnglePushUps()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.RightAnglePushUps.Where(a => a.Owner == owner);
+            return db.RightAnglePushUps.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/RightAnglePushUpApi/5

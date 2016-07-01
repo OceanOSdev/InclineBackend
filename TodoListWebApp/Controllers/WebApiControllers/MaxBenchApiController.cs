@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<MaxBenchModel> GetMaxBenches()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.MaxBenches.Where(a => a.Owner == owner);
+            return db.MaxBenches.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/MaxBenchApi/5

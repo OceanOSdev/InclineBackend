@@ -25,7 +25,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<HeightModel> GetHeights()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.Heights.Where(a => a.Owner == owner);
+            return db.Heights.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/HeightApi/5

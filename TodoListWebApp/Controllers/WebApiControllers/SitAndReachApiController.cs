@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<SitAndReachModel> GetSitAndReaches()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.SitAndReaches.Where(a => a.Owner == owner);
+            return db.SitAndReaches.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/SitAndReachApi/5

@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<StepTestModel> GetStepTests()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.StepTests.Where(a => a.Owner == owner);
+            return db.StepTests.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/StepTestApi/5

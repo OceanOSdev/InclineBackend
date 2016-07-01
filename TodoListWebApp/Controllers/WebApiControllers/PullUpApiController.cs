@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<PullUpModel> GetPullUps()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.PullUps.Where(a => a.Owner == owner);
+            return db.PullUps.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/PullUpApi/5

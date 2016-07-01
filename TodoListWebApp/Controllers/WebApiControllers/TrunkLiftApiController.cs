@@ -24,7 +24,7 @@ namespace TodoListWebApp.Controllers
         public IQueryable<TrunkLiftModel> GetTrunkLifts()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.TrunkLifts.Where(a => a.Owner == owner);
+            return db.TrunkLifts.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
         // GET: api/TrunkLiftApi/5
