@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             maxBenchModel.Owner = owner;
-            maxBenchModel.Logged = DateTime.UtcNow; 
+            //maxBenchModel.Logged = DateTime.UtcNow; 
             db.MaxBenches.Add(maxBenchModel);
             db.SaveChanges();
 

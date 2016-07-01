@@ -90,7 +90,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             curlUpModel.Owner = owner;
-            curlUpModel.Logged = DateTime.UtcNow;
+            //curlUpModel.Logged = DateTime.UtcNow;
             db.CurlUps.Add(curlUpModel);
             db.SaveChanges();
 

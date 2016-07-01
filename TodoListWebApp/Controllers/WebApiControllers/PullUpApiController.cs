@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             pullUpModel.Owner = owner;
-            pullUpModel.Logged = DateTime.UtcNow;
+            //pullUpModel.Logged = DateTime.UtcNow;
             db.PullUps.Add(pullUpModel);
             db.SaveChanges();
 

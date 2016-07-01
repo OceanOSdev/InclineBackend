@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             pacerModel.Owner = owner;
-            pacerModel.Logged = DateTime.UtcNow;
+            //pacerModel.Logged = DateTime.UtcNow;
             db.Pacers.Add(pacerModel);
             db.SaveChanges();
 

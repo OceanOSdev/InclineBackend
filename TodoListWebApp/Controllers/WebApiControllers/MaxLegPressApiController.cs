@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             maxLegPressModel.Owner = owner;
-            maxLegPressModel.Logged = DateTime.UtcNow;
+            //maxLegPressModel.Logged = DateTime.UtcNow;
             db.MaxLegPresses.Add(maxLegPressModel);
             db.SaveChanges();
 

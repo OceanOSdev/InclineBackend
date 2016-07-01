@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             percentBodyFatModel.Owner = owner;
-            percentBodyFatModel.Logged = DateTime.UtcNow;
+            //percentBodyFatModel.Logged = DateTime.UtcNow;
             db.PercentBodyFats.Add(percentBodyFatModel);
             db.SaveChanges();
 

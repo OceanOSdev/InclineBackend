@@ -117,7 +117,7 @@ namespace TodoListWebApp.Controllers
                 return BadRequest(ModelState);
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            armAndShoulderModel.Logged = DateTime.UtcNow;
+            //armAndShoulderModel.Logged = DateTime.UtcNow;
             armAndShoulderModel.Owner = owner;
             db.ArmAndShoulders.Add(armAndShoulderModel);
             db.SaveChanges();

@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             mileTimeModel.Owner = owner;
-            mileTimeModel.Logged = DateTime.UtcNow;
+            //mileTimeModel.Logged = DateTime.UtcNow;
             db.MileTimes.Add(mileTimeModel);
             db.SaveChanges();
 

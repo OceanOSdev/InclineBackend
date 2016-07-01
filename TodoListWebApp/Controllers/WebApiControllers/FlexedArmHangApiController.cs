@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             flexedArmHangModel.Owner = owner;
-            flexedArmHangModel.Logged = DateTime.UtcNow;
+            //flexedArmHangModel.Logged = DateTime.UtcNow;
             db.FlexedArmHangs.Add(flexedArmHangModel);
             db.SaveChanges();
 

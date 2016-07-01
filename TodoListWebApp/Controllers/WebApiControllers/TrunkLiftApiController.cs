@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             trunkLiftModel.Owner = owner;
-            trunkLiftModel.Logged = DateTime.UtcNow;
+            //trunkLiftModel.Logged = DateTime.UtcNow;
             db.TrunkLifts.Add(trunkLiftModel);
             db.SaveChanges();
 

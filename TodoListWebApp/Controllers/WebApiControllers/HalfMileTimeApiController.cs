@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             halfMileTimeModel.Owner = owner;
-            halfMileTimeModel.Logged = DateTime.UtcNow;
+            //halfMileTimeModel.Logged = DateTime.UtcNow;
             db.HalfMileTimes.Add(halfMileTimeModel);
             db.SaveChanges();
 

@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             sitAndReachModel.Owner = owner;
-            sitAndReachModel.Logged = DateTime.UtcNow;
+            //sitAndReachModel.Logged = DateTime.UtcNow;
             db.SitAndReaches.Add(sitAndReachModel);
             db.SaveChanges();
 

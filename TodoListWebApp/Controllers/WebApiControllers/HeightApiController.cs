@@ -87,7 +87,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             heightModel.Owner = owner;
-            heightModel.Logged = DateTime.UtcNow;
+            //heightModel.Logged = DateTime.UtcNow;
             db.Heights.Add(heightModel);
             db.SaveChanges();
 

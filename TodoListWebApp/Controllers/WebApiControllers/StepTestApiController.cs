@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             stepTestModel.Owner = owner;
-            stepTestModel.Logged = DateTime.UtcNow;
+            //stepTestModel.Logged = DateTime.UtcNow;
             db.StepTests.Add(stepTestModel);
             db.SaveChanges();
 

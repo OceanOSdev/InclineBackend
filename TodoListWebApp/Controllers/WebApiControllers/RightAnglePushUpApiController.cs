@@ -86,7 +86,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             rightAnglePushUpModel.Owner = owner;
-            rightAnglePushUpModel.Logged = DateTime.UtcNow;
+            //rightAnglePushUpModel.Logged = DateTime.UtcNow;
             db.RightAnglePushUps.Add(rightAnglePushUpModel);
             db.SaveChanges();
 

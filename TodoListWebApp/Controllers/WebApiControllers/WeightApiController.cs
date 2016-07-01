@@ -87,7 +87,7 @@ namespace TodoListWebApp.Controllers
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             weightModel.Owner = owner;
-            weightModel.Logged = DateTime.UtcNow;
+            //weightModel.Logged = DateTime.UtcNow;
             db.Weights.Add(weightModel);
             db.SaveChanges();
 
