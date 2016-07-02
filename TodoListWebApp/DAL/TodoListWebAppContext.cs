@@ -41,6 +41,7 @@ namespace TodoListWebApp.DAL
         public DbSet<PacerModel> Pacers { get; set; }
         public DbSet<MileTimeModel> MileTimes { get; set; }
         public DbSet<StepTestModel> StepTests { get; set; }
+        public DbSet<StepTestHeartRateModel> StepTestHeartRates { get; set; }
         public DbSet<CurlUpModel> CurlUps { get; set; }
         public DbSet<RightAnglePushUpModel> RightAnglePushUps { get; set; }
         public DbSet<MaxBenchModel> MaxBenches { get; set; }

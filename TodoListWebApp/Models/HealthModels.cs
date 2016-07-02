@@ -106,11 +106,17 @@ namespace TodoListWebApp.Models
         /// <summary>The amount of steps taken during the 3 minute step test. </summary>
         [DisplayName("3 Minute Step Test (Steps)")]
         public int StepTestSteps { get; set; }
+    }
+
+    /// <summary>
+    /// THe model that represents a user's step test heart rate.
+    /// </summary>
+    public class StepTestHeartRateModel : BaseModel
+    {
         /// <summary>The user's heart rate after the 3 minute step test. </summary>
         [DisplayName("Step Test (Heart Rate)")]
         public int StepTestHeartRate { get; set; }
     }
-
 
     /// <summary>
     /// The model that represents a user's curl ups.

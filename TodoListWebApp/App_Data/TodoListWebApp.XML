@@ -804,7 +804,12 @@
         <member name="P:TodoListWebApp.Models.StepTestModel.StepTestSteps">
             <summary>The amount of steps taken during the 3 minute step test. </summary>
         </member>
-        <member name="P:TodoListWebApp.Models.StepTestModel.StepTestHeartRate">
+        <member name="T:TodoListWebApp.Models.StepTestHeartRateModel">
+            <summary>
+            THe model that represents a user's step test heart rate.
+            </summary>
+        </member>
+        <member name="P:TodoListWebApp.Models.StepTestHeartRateModel.StepTestHeartRate">
             <summary>The user's heart rate after the 3 minute step test. </summary>
         </member>
         <member name="T:TodoListWebApp.Models.CurlUpModel">
