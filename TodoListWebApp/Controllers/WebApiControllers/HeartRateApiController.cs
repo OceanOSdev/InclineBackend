@@ -16,46 +16,47 @@ namespace TodoListWebApp.Controllers
 {
     [HostAuthentication("AADBearer")]
     [Authorize]
-    public class StepTestHeartRateModelApiController : ApiController
+    public class HeartRateApiController : ApiController
     {
         private TodoListWebAppContext db = new TodoListWebAppContext();
 
-        // GET: api/StepTestHeartRateModelApi
-        public IQueryable<StepTestHeartRateModel> GetStepTestHeartRates()
+        // GET: api/HeartRateApi
+        public IQueryable<HeartRateModel> GetHeartRates()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return db.StepTestHeartRates.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
+            return db.HeartRates.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged);
         }
 
-        // GET: api/StepTestHeartRateModelApi/5
-        [ResponseType(typeof(StepTestHeartRateModel))]
-        public IHttpActionResult GetStepTestHeartRateModel(int id)
+        // GET: api/HeartRateApi/5
+        [ResponseType(typeof(HeartRateModel))]
+        public IHttpActionResult GetHeartRateModel(int id)
         {
-            StepTestHeartRateModel stepTestHeartRateModel = db.StepTestHeartRates.Find(id);
+            HeartRateModel heartRateModel = db.HeartRates.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (stepTestHeartRateModel == null || stepTestHeartRateModel.Owner != owner)
+
+            if (heartRateModel == null || heartRateModel.Owner != owner)
             {
                 return NotFound();
             }
 
-            return Ok(stepTestHeartRateModel);
+            return Ok(heartRateModel);
         }
 
-        // PUT: api/StepTestHeartRateModelApi/5
+        // PUT: api/HeartRateApi/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutStepTestHeartRateModel(int id, StepTestHeartRateModel stepTestHeartRateModel)
+        public IHttpActionResult PutHeartRateModel(int id, HeartRateModel heartRateModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != stepTestHeartRateModel.ID)
+            if (id != heartRateModel.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(stepTestHeartRateModel).State = EntityState.Modified;
+            db.Entry(heartRateModel).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +64,7 @@ namespace TodoListWebApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StepTestHeartRateModelExists(id))
+                if (!HeartRateModelExists(id))
                 {
                     return NotFound();
                 }
@@ -76,37 +77,37 @@ namespace TodoListWebApp.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/StepTestHeartRateModelApi
-        [ResponseType(typeof(StepTestHeartRateModel))]
-        public IHttpActionResult PostStepTestHeartRateModel(StepTestHeartRateModel stepTestHeartRateModel)
+        // POST: api/HeartRateApi
+        [ResponseType(typeof(HeartRateModel))]
+        public IHttpActionResult PostHeartRateModel(HeartRateModel heartRateModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            stepTestHeartRateModel.Owner = owner;
-            db.StepTestHeartRates.Add(stepTestHeartRateModel);
+            heartRateModel.Owner = owner;
+            db.HeartRates.Add(heartRateModel);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = stepTestHeartRateModel.ID }, stepTestHeartRateModel);
+            return CreatedAtRoute("DefaultApi", new { id = heartRateModel.ID }, heartRateModel);
         }
 
-        // DELETE: api/StepTestHeartRateModelApi/5
-        [ResponseType(typeof(StepTestHeartRateModel))]
-        public IHttpActionResult DeleteStepTestHeartRateModel(int id)
+        // DELETE: api/HeartRateApi/5
+        [ResponseType(typeof(HeartRateModel))]
+        public IHttpActionResult DeleteHeartRateModel(int id)
         {
-            StepTestHeartRateModel stepTestHeartRateModel = db.StepTestHeartRates.Find(id);
+            HeartRateModel heartRateModel = db.HeartRates.Find(id);
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (stepTestHeartRateModel == null || stepTestHeartRateModel.Owner != owner)
+            if (heartRateModel == null || heartRateModel.Owner != owner)
             {
                 return NotFound();
             }
 
-            db.StepTestHeartRates.Remove(stepTestHeartRateModel);
+            db.HeartRates.Remove(heartRateModel);
             db.SaveChanges();
 
-            return Ok(stepTestHeartRateModel);
+            return Ok(heartRateModel);
         }
 
         protected override void Dispose(bool disposing)
@@ -118,9 +119,9 @@ namespace TodoListWebApp.Controllers
             base.Dispose(disposing);
         }
 
-        private bool StepTestHeartRateModelExists(int id)
+        private bool HeartRateModelExists(int id)
         {
-            return db.StepTestHeartRates.Count(e => e.ID == id) > 0;
+            return db.HeartRates.Count(e => e.ID == id) > 0;
         }
     }
 }

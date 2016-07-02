@@ -48,6 +48,7 @@ namespace TodoListWebApp.DAL
         public DbSet<MaxLegPressModel> MaxLegPresses { get; set; }
         public DbSet<PullUpModel> PullUps { get; set; }
         public DbSet<FlexedArmHangModel> FlexedArmHangs { get; set; }
+        public DbSet<HeartRateModel> HeartRates { get; set; }
 
         // Skill Related DatabaseSets
         public DbSet<ReactionTime> ReactionTimes { get; set; }

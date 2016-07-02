@@ -177,6 +177,15 @@ namespace TodoListWebApp.Models
         [DisplayName("Flexed Arm Hang (seconds)")]
         public TimeSpan FlexedArmHang { get; set; }
     }
+
+    /// <summary>
+    /// The model that represents a user's heart rate.
+    /// </summary>
+    public class HeartRateModel : BaseModel
+    {
+        [DisplayName("Heart Rate (BPM)")]
+        public int HeartRate { get; set; }
+    }
     #endregion
 
     #region Deprecated Models

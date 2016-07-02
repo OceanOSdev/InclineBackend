@@ -218,6 +218,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AuthorizationFilters\InclineAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\WebApiControllers\HeartRateApiController.cs" />
     <Compile Include="Controllers\OldControllers\BodyCompositionController.cs" />
     <Compile Include="Controllers\OldControllers\CardiovascularFitnessController.cs" />
     <Compile Include="Controllers\OldControllers\FlexibilitiesController.cs" />
@@ -272,6 +273,10 @@
     <Compile Include="Migrations\201607020355545_StepTestDecouple.cs" />
     <Compile Include="Migrations\201607020355545_StepTestDecouple.Designer.cs">
       <DependentUpon>201607020355545_StepTestDecouple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607020430389_HeartRateModelCreation.cs" />
+    <Compile Include="Migrations\201607020430389_HeartRateModelCreation.Designer.cs">
+      <DependentUpon>201607020430389_HeartRateModelCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppModels.cs" />
@@ -392,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607020355545_StepTestDecouple.resx">
       <DependentUpon>201607020355545_StepTestDecouple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607020430389_HeartRateModelCreation.resx">
+      <DependentUpon>201607020430389_HeartRateModelCreation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -860,6 +860,11 @@
         <member name="P:TodoListWebApp.Models.FlexedArmHangModel.FlexedArmHang">
             <summary>The duration of time that the user was able to perform the flexed arm hang in seconds. </summary>
         </member>
+        <member name="T:TodoListWebApp.Models.HeartRateModel">
+            <summary>
+            The model that represents a user's heart rate.
+            </summary>
+        </member>
         <member name="T:TodoListWebApp.Models.Flexibility">
             <summary>
             Models the data relevant to Flexibility.
