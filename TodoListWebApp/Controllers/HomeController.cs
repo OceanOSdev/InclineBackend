@@ -12,7 +12,12 @@ namespace TodoListWebApp.Controllers
         {
             return View();
         }
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Contact";
 
+            return View();
+        }
         public ActionResult Error(string message)
         {
             ViewBag.Message = message;

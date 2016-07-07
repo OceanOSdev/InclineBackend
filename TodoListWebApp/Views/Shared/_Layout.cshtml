@@ -18,10 +18,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Incline Fitness", "Index", "Home", null, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Api Help", "Index", "Help")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li role="presentation" class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Health Related <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -31,10 +33,7 @@
                             <li>@Html.ActionLink("Muscular Strength and Endurance", "Index", "MuscularStrengthAndEndurance")</li>
                         </ul>
                     </li>
-@if (!Request.IsAuthenticated)
-{
-                    <li>@Html.ActionLink("Sign Up", "SignUp", "Onboarding")</li>
-}
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -44,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Incline</p>
+            <p>&copy; @DateTime.Now.Year - Isophex LLC.</p>
         </footer>
     </div>
 

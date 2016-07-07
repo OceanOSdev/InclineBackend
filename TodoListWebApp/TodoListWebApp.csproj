@@ -218,6 +218,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AuthorizationFilters\InclineAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PrivacyController.cs" />
     <Compile Include="Controllers\WebApiControllers\HeartRateApiController.cs" />
     <Compile Include="Controllers\OldControllers\BodyCompositionController.cs" />
     <Compile Include="Controllers\OldControllers\CardiovascularFitnessController.cs" />
@@ -381,6 +382,8 @@
     <Content Include="Views\MuscularStrengthAndEndurance\Edit.cshtml" />
     <Content Include="Views\MuscularStrengthAndEndurance\Index.cshtml" />
     <Content Include="Views\Health\Index.cshtml" />
+    <Content Include="Views\Privacy\Index.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201407162351183_InitialCreate.resx">
