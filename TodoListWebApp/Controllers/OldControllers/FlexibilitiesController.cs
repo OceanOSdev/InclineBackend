@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using TodoListWebApp.DAL;
 using TodoListWebApp.Models;
 using System.Security.Claims;
+using TodoListWebApp.ViewModels;
 
 namespace TodoListWebApp.Controllers
 {
@@ -21,10 +22,14 @@ namespace TodoListWebApp.Controllers
         // GET: Flexibilities
         public ActionResult Index()
         {
-            //string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var list = db.Flexibilities.Where(a => a.Owner == owner);
-            //return View(list.ToList());
-            return View();
+            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var vm = new FlexibilityViewModel()
+            {
+                ArmAndShoulder = db.ArmAndShoulders.Where(a => a.Owner == owner).ToList(),
+                SitAndReach = db.SitAndReaches.Where(a => a.Owner == owner).ToList(),
+                TrunkLift = db.TrunkLifts.Where(a => a.Owner == owner).ToList()
+            };
+            return View(vm);
         }
 
         // GET: Flexibilities/Details/5
