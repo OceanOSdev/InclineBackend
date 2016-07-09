@@ -25,9 +25,9 @@ namespace TodoListWebApp.Controllers
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             var vm = new FlexibilityViewModel()
             {
-                ArmAndShoulder = db.ArmAndShoulders.Where(a => a.Owner == owner).ToList(),
-                SitAndReach = db.SitAndReaches.Where(a => a.Owner == owner).ToList(),
-                TrunkLift = db.TrunkLifts.Where(a => a.Owner == owner).ToList()
+                ArmAndShoulder = db.ArmAndShoulders.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                SitAndReach = db.SitAndReaches.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                TrunkLift = db.TrunkLifts.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList()
             };
             return View(vm);
         }

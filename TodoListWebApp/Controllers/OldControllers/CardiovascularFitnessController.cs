@@ -25,11 +25,11 @@ namespace TodoListWebApp.Controllers
             //Func<BaseModel, bool> predicate = a => a.Owner == owner; // THis doesn't work in linq to entities
             var vm = new CardioViewModel()
             {
-                HalfMile = db.HalfMileTimes.Where(a => a.Owner == owner).ToList(),
-                HeartRate = db.HeartRates.Where(a => a.Owner == owner).ToList(),
-                Mile = db.MileTimes.Where(a => a.Owner == owner).ToList(),
-                Pacer = db.Pacers.Where(a => a.Owner == owner).ToList(),
-                StepTest = db.StepTests.Where(a => a.Owner == owner).ToList()
+                HalfMile = db.HalfMileTimes.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                HeartRate = db.HeartRates.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                Mile = db.MileTimes.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                Pacer = db.Pacers.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                StepTest = db.StepTests.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList()
             };
 
             return View(vm);

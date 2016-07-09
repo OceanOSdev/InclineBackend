@@ -25,9 +25,9 @@ namespace TodoListWebApp.Controllers
             
             var data = new BodyCompViewModel()
             {
-                BodyFat = db.PercentBodyFats.Where(a => a.Owner == owner).ToList(),
-                Height = db.Heights.Where(a => a.Owner == owner).ToList(),
-                Weight = db.Weights.Where(a => a.Owner == owner).ToList()
+                BodyFat = db.PercentBodyFats.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                Height = db.Heights.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                Weight = db.Weights.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList()
             };
             return View(data);
         }

@@ -23,12 +23,12 @@ namespace TodoListWebApp.Controllers
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
             var vm = new StrengthEnduranceViewModel()
             {
-                CurlUp = db.CurlUps.Where(a => a.Owner == owner).ToList(),
-                FlexedArmHang = db.FlexedArmHangs.Where(a => a.Owner == owner).ToList(),
-                MaxBench = db.MaxBenches.Where(a => a.Owner == owner).ToList(),
-                MaxLegPress = db.MaxLegPresses.Where(a => a.Owner == owner).ToList(),
-                PullUp = db.PullUps.Where(a => a.Owner == owner).ToList(),
-                RightAnglePushUp = db.RightAnglePushUps.Where(a => a.Owner == owner).ToList()
+                CurlUp = db.CurlUps.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                FlexedArmHang = db.FlexedArmHangs.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                MaxBench = db.MaxBenches.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                MaxLegPress = db.MaxLegPresses.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                PullUp = db.PullUps.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList(),
+                RightAnglePushUp = db.RightAnglePushUps.Where(a => a.Owner == owner).OrderByDescending(x => x.Logged).ToList()
             };
             return View(vm);
         }
