@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TodoListWebApp.Models.CardiovascularFitness>
+﻿@model TodoListWebApp.ViewModels.CardioViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -6,58 +6,97 @@
 
 <h2>Cardiovascular Fitness</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.HalfMileTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pacer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MileTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StepTestSteps)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StepTestHeartRate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Logged)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(a => a.MileTimeModel.MileTime)</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(a => a.MileTimeModel.MileTime)</th>
+                <th>@Html.DisplayNameFor(a => a.MileTimeModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.Mile)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.MileTime)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.HalfMileTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pacer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MileTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StepTestSteps)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StepTestHeartRate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Logged)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(a => a.HalfMileTimeModel.HalfMileTime)</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(a => a.HalfMileTimeModel.HalfMileTime)</th>
+                <th>@Html.DisplayNameFor(a => a.MileTimeModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.HalfMile)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(hm => item.HalfMileTime)</td>
+                    <td>@Html.DisplayFor(hm => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(a => a.PacerModel.Pacer)</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(a => a.PacerModel.Pacer)</th>
+                <th>@Html.DisplayNameFor(a => a.MileTimeModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.Pacer)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(p => item.Pacer)</td>
+                    <td>@Html.DisplayFor(p => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(a => a.StepTestModel.StepTestSteps)</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(a => a.StepTestModel.StepTestSteps)</th>
+                <th>@Html.DisplayNameFor(a => a.MileTimeModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.StepTest)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(s => item.StepTestSteps)</td>
+                    <td>@Html.DisplayFor(s => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(a => a.HeartRateModel.HeartRate)</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(a => a.HeartRateModel.HeartRate)</th>
+                <th>@Html.DisplayNameFor(a => a.MileTimeModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.HeartRate)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(h => item.HeartRate)</td>
+                    <td>@Html.DisplayFor(h => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

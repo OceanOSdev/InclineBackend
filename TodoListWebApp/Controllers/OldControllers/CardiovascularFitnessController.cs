@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TodoListWebApp.DAL;
 using TodoListWebApp.Models;
+using TodoListWebApp.ViewModels;
 
 namespace TodoListWebApp.Controllers
 {
@@ -21,9 +22,17 @@ namespace TodoListWebApp.Controllers
         public ActionResult Index()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var currentUserCardio = db.Cardios.Where(a => a.Owner == owner);
-            //return new HttpStatusCodeResult(418);
-            return View(currentUserCardio.ToList());
+            //Func<BaseModel, bool> predicate = a => a.Owner == owner; // THis doesn't work in linq to entities
+            var vm = new CardioViewModel()
+            {
+                HalfMile = db.HalfMileTimes.Where(a => a.Owner == owner).ToList(),
+                HeartRate = db.HeartRates.Where(a => a.Owner == owner).ToList(),
+                Mile = db.MileTimes.Where(a => a.Owner == owner).ToList(),
+                Pacer = db.Pacers.Where(a => a.Owner == owner).ToList(),
+                StepTest = db.StepTests.Where(a => a.Owner == owner).ToList()
+            };
+
+            return View(vm);
         }
 
         // GET: CardiovascularFitness/Details/5

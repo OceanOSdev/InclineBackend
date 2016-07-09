@@ -8,7 +8,7 @@ using TodoListWebApp.Models;
 
 namespace TodoListWebApp.DAL
 {
-   /// <summary>
+    /// <summary>
    /// The class that holds the database connections and sets
    /// </summary>
    /// <remarks>

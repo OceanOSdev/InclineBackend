@@ -21,9 +21,10 @@ namespace TodoListWebApp.Controllers
         // GET: Flexibilities
         public ActionResult Index()
         {
-            string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var list = db.Flexibilities.Where(a => a.Owner == owner);
-            return View(list.ToList());
+            //string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
+            //var list = db.Flexibilities.Where(a => a.Owner == owner);
+            //return View(list.ToList());
+            return View();
         }
 
         // GET: Flexibilities/Details/5

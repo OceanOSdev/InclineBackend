@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TodoListWebApp.Models.BodyComposition>
+﻿@model TodoListWebApp.ViewModels.BodyCompViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -6,46 +6,59 @@
 
 <h2>Body Composition</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Height)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Weight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BodyFat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Logged)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(a => a.HeightModel.Height) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(a => a.HeightModel.Height)</th>
+                <th>@Html.DisplayNameFor(a => a.HeightModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.Height)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(h => item.Height)</td>
+                    <td>@Html.DisplayFor(h => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Height)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BodyFat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Logged)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(a => a.WeightModel.Weight) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(w => w.WeightModel.Weight)</th>
+                <th>@Html.DisplayNameFor(w => w.WeightModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.Weight)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(w => item.Weight)</td>
+                    <td>@Html.DisplayFor(w => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(a => a.PercentBodyFatModel.BodyFat) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(b => b.PercentBodyFatModel.BodyFat)</th>
+                <th>@Html.DisplayNameFor(b => b.PercentBodyFatModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.BodyFat)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(b => item.BodyFat)</td>
+                    <td>@Html.DisplayFor(b => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

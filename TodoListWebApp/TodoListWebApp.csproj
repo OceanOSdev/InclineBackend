@@ -285,6 +285,10 @@
     <Compile Include="Models\SkillModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BodyCompViewModel.cs" />
+    <Compile Include="ViewModels\CardioViewModel.cs" />
+    <Compile Include="ViewModels\FlexibilityViewModel.cs" />
+    <Compile Include="ViewModels\StrengthEnduranceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\TodoListWebApp.XML" />

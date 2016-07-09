@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TodoListWebApp.DAL;
 using TodoListWebApp.Models;
+using TodoListWebApp.ViewModels;
 
 namespace TodoListWebApp.Controllers
 {
@@ -21,8 +22,14 @@ namespace TodoListWebApp.Controllers
         public ActionResult Index()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var currentBodyComp = db.BodyComps.Where(a => a.Owner == owner);
-            return View(currentBodyComp.ToList());
+            
+            var data = new BodyCompViewModel()
+            {
+                BodyFat = db.PercentBodyFats.Where(a => a.Owner == owner).ToList(),
+                Height = db.Heights.Where(a => a.Owner == owner).ToList(),
+                Weight = db.Weights.Where(a => a.Owner == owner).ToList()
+            };
+            return View(data);
         }
 
         // GET: BodyComposition/Details/5

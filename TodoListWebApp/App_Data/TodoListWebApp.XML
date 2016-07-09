@@ -972,5 +972,12 @@
         <member name="P:TodoListWebApp.Models.MuscularStrengthAndEndurance.Logged">
             <summary>The time the model was logged. </summary>
         </member>
+        <member name="P:TodoListWebApp.ViewModels.BodyCompViewModel.HeightModel">
+            <summary>
+            The purpose of the properties with model at the end of them is
+            so that I can safely pass string representations of the model's properties
+            between view model and view.
+            </summary>
+        </member>
     </members>
 </doc>
