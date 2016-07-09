@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TodoListWebApp.Models.MuscularStrengthAndEndurance>
+﻿@model TodoListWebApp.ViewModels.StrengthEnduranceViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -6,64 +6,116 @@
 
 <h2>Muscular Strength And Endurance</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CurlUps)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RightAnglePushUps)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaxBench)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaxLegPress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PullUps)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FlexedArmHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Logged)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.CurlUpModel.CurlUps) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.CurlUpModel.CurlUps)</th>
+                <th>@Html.DisplayNameFor(m => m.CurlUpModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.CurlUp)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.CurlUps)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CurlUps)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RightAnglePushUps)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxBench)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaxLegPress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PullUps)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlexedArmHang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Logged)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.FlexedArmHangModel.FlexedArmHang) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.FlexedArmHangModel.FlexedArmHang)</th>
+                <th>@Html.DisplayNameFor(m => m.FlexedArmHangModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.FlexedArmHang)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.FlexedArmHang)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.MaxBenchModel.MaxBench) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.MaxBenchModel.MaxBench)</th>
+                <th>@Html.DisplayNameFor(m => m.MaxBenchModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.MaxBench)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.MaxBench)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.MaxLegPressModel.MaxLegPress) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.MaxLegPressModel.MaxLegPress)</th>
+                <th>@Html.DisplayNameFor(m => m.MaxLegPressModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.MaxLegPress)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.MaxLegPress)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.PullUpModel.PullUps) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.PullUpModel.PullUps)</th>
+                <th>@Html.DisplayNameFor(m => m.PullUpModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.PullUp)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.PullUps)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.RightAnglePushUpModel.RightAnglePushUps) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.RightAnglePushUpModel.RightAnglePushUps)</th>
+                <th>@Html.DisplayNameFor(m => m.RightAnglePushUpModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.RightAnglePushUp)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.RightAnglePushUps)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

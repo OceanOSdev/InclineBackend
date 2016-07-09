@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TodoListWebApp.DAL;
 using TodoListWebApp.Models;
+using TodoListWebApp.ViewModels;
 
 namespace TodoListWebApp.Controllers
 {
@@ -20,8 +21,16 @@ namespace TodoListWebApp.Controllers
         public ActionResult Index()
         {
             string owner = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier).Value;
-            var currentMuscularStrength = db.MuscularStrengthsAndEndurances.Where(a => a.Owner == owner);
-            return View(currentMuscularStrength.ToList());
+            var vm = new StrengthEnduranceViewModel()
+            {
+                CurlUp = db.CurlUps.Where(a => a.Owner == owner).ToList(),
+                FlexedArmHang = db.FlexedArmHangs.Where(a => a.Owner == owner).ToList(),
+                MaxBench = db.MaxBenches.Where(a => a.Owner == owner).ToList(),
+                MaxLegPress = db.MaxLegPresses.Where(a => a.Owner == owner).ToList(),
+                PullUp = db.PullUps.Where(a => a.Owner == owner).ToList(),
+                RightAnglePushUp = db.RightAnglePushUps.Where(a => a.Owner == owner).ToList()
+            };
+            return View(vm);
         }
 
         // GET: MuscularStrengthAndEndurance/Details/5
