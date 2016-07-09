@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TodoListWebApp.Models.Flexibility>
+﻿@model TodoListWebApp.ViewModels.FlexibilityViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -6,46 +6,59 @@
 
 <h2>Flexibility</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SitAndReach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ArmAndShoulder)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrunkLift)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Logged)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.ArmAndShoulderModel.ArmAndShoulder) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.ArmAndShoulderModel.ArmAndShoulder)</th>
+                <th>@Html.DisplayNameFor(m => m.ArmAndShoulderModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.ArmAndShoulder)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.ArmAndShoulder)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SitAndReach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArmAndShoulder)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrunkLift)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Logged)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.SitAndReachModel.SitAndReach) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.SitAndReachModel.SitAndReach)</th>
+                <th>@Html.DisplayNameFor(m => m.SitAndReachModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.SitAndReach)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.SitAndReach)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Html.DisplayNameFor(m => m.TrunkLiftModel.TrunkLift) Data</h3>
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.TrunkLiftModel.TrunkLift)</th>
+                <th>@Html.DisplayNameFor(m => m.TrunkLiftModel.Logged)</th>
+            </tr>
+            @foreach (var item in Model.TrunkLift)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => item.TrunkLift)</td>
+                    <td>@Html.DisplayFor(m => item.Logged)</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
