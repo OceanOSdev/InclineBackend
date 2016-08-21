@@ -7,106 +7,371 @@
 <h2>Cardiovascular Fitness</h2>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(a => a.MileTimeModel.MileTime)</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(a => a.MileTimeModel.MileTime)</th>
-                    <th>@Html.DisplayNameFor(a => a.MileTimeModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(a => a.MileTimeModel.MileTime)</th>
+                <th>@Html.DisplayNameFor(a => a.MileTimeModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.Mile)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteMileTime(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(m => item.MileTime)</td>
                     <td>@Html.DisplayFor(m => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="mileForm">
+            <h4>Mile Time</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Mile Time (HH:MM:SS)</label>
+                <input id="mileTime" type="text" name="Mile" value="00:00:00" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="mileTimeLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="mileTimeSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(a => a.HalfMileTimeModel.HalfMileTime)</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(a => a.HalfMileTimeModel.HalfMileTime)</th>
-                    <th>@Html.DisplayNameFor(a => a.HalfMileTimeModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(a => a.HalfMileTimeModel.HalfMileTime)</th>
+                <th>@Html.DisplayNameFor(a => a.HalfMileTimeModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.HalfMile)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteHalfMileTime(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(hm => item.HalfMileTime)</td>
                     <td>@Html.DisplayFor(hm => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="halfMileForm">
+            <h4>Half Mile Time</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Half Mile Time (HH:MM:SS)</label>
+                <input id="halfMile" type="text" name="HalfMile" value="00:00:00" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="halfMileLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="halfMileSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(a => a.PacerModel.Pacer)</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(a => a.PacerModel.Pacer)</th>
-                    <th>@Html.DisplayNameFor(a => a.PacerModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(a => a.PacerModel.Pacer)</th>
+                <th>@Html.DisplayNameFor(a => a.PacerModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.Pacer)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deletePacer(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(p => item.Pacer)</td>
                     <td>@Html.DisplayFor(p => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="pacerForm">
+            <h4>Pacer</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Pacer (# of laps)</label>
+                <input id="pacer" type="number" name="Pacer" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="pacerLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="pacerSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(a => a.StepTestModel.StepTestSteps)</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(a => a.StepTestModel.StepTestSteps)</th>
-                    <th>@Html.DisplayNameFor(a => a.StepTestModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(a => a.StepTestModel.StepTestSteps)</th>
+                <th>@Html.DisplayNameFor(a => a.StepTestModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.StepTest)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteStepTestSteps(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(s => item.StepTestSteps)</td>
                     <td>@Html.DisplayFor(s => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="stepTestForm">
+            <h4>Step Test Steps</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Step Test Steps</label>
+                <input id="stepTest" type="number" name="StepTest" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="stepTestLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="stepTestSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(a => a.HeartRateModel.HeartRate)</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(a => a.HeartRateModel.HeartRate)</th>
-                    <th>@Html.DisplayNameFor(a => a.HeartRateModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(a => a.HeartRateModel.HeartRate)</th>
+                <th>@Html.DisplayNameFor(a => a.HeartRateModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.HeartRate)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteHeartRate(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(h => item.HeartRate)</td>
                     <td>@Html.DisplayFor(h => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="heartRateForm">
+            <h4>Heart Rate</h4>
+            <hr/>
+            <div class="form-group">
+                <label class="control-label">Heart Rate (bpm)</label>
+                <input id="heartRate" type="number" name="HeartRate" value="" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="heartRateLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input id="heartRateSubmit" type="submit" value="Submit" class="btn btn-default"/>
+            </div>
+        </form>
+    </div>
 </div>
+
+@section scripts
+{
+    <script>
+        function deleteMileTime(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/miletimeapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        function deleteHalfMileTime(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/halfmiletimeapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        function deletePacer(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/pacerapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        function deleteStepTestSteps(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/steptestapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        function deleteHeartRate(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/heartrateapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        $("#mileTimeSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'MileTime': $("#mileTime").val(),
+                    'Logged': $("#mileTimeLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/miletimeapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+
+        $("#halfMileSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'HalfMileTime': $("#halfMile").val(),
+                    'Logged': $("#halfMileLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/halfmiletimeapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+
+        $("#pacerSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'Pacer': $("#pacer").val(),
+                    'Logged': $("#pacerLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/pacerapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+
+        $("#stepTestSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'StepTestSteps': $("#stepTest").val(),
+                    'Logged': $("#stepTestLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/steptestapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+
+        $("#heartRateSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'HeartRate': $("#heartRate").val(),
+                    'Logged': $("#heartRateLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/heartrateapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+    </script>
+}

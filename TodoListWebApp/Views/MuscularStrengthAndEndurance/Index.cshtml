@@ -7,14 +7,14 @@
 <h2>Muscular Strength And Endurance</h2>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(m => m.CurlUpModel.CurlUps) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.CurlUpModel.CurlUps)</th>
-                    <th>@Html.DisplayNameFor(m => m.CurlUpModel.Logged)</th>
-                </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.CurlUpModel.CurlUps)</th>
+                <th>@Html.DisplayNameFor(m => m.CurlUpModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.CurlUp)
             {
@@ -25,17 +25,34 @@
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="curlUpForm">
+            <h4>Curl Ups</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Curl Ups</label>
+                <input id="curlUps" type="number" name="CurlUps" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="curlUpsLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="curlUpsSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(m => m.FlexedArmHangModel.FlexedArmHang) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.FlexedArmHangModel.FlexedArmHang)</th>
-                    <th>@Html.DisplayNameFor(m => m.FlexedArmHangModel.Logged)</th>
-                </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.FlexedArmHangModel.FlexedArmHang)</th>
+                <th>@Html.DisplayNameFor(m => m.FlexedArmHangModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.FlexedArmHang)
             {
@@ -46,17 +63,34 @@
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="flexedArmForm">
+            <h4>Flexed Arm Hang</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Flexed Arm Hang (HH:MM:SS)</label>
+                <input id="flexedArmHang" type="text" name="FlexedArmHang" value="00:00:00" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="flexedArmHangLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="flexedArmHangSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(m => m.MaxBenchModel.MaxBench) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.MaxBenchModel.MaxBench)</th>
-                    <th>@Html.DisplayNameFor(m => m.MaxBenchModel.Logged)</th>
-                </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.MaxBenchModel.MaxBench)</th>
+                <th>@Html.DisplayNameFor(m => m.MaxBenchModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.MaxBench)
             {
@@ -67,17 +101,34 @@
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="maxBenchForm">
+            <h4>Max Bench</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Max Bench (lb)</label>
+                <input id="maxBench" type="number" name="MaxBench" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="maxBenchLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="maxBenchSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(m => m.MaxLegPressModel.MaxLegPress) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.MaxLegPressModel.MaxLegPress)</th>
-                    <th>@Html.DisplayNameFor(m => m.MaxLegPressModel.Logged)</th>
-                </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.MaxLegPressModel.MaxLegPress)</th>
+                <th>@Html.DisplayNameFor(m => m.MaxLegPressModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.MaxLegPress)
             {
@@ -88,17 +139,34 @@
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="maxLegForm">
+            <h4>Max Leg Press</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Max Leg Press (lb)</label>
+                <input id="maxLeg" type="number" name="MaxLegPress" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="maxLegLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="maxLegSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(m => m.PullUpModel.PullUps) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.PullUpModel.PullUps)</th>
-                    <th>@Html.DisplayNameFor(m => m.PullUpModel.Logged)</th>
-                </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.PullUpModel.PullUps)</th>
+                <th>@Html.DisplayNameFor(m => m.PullUpModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.PullUp)
             {
@@ -109,17 +177,34 @@
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="pullUpForm">
+            <h4>Pull Ups</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Pull Ups</label>
+                <input id="pullUps" type="number" name="PullUps" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="pullUpsLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="pullUpsSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(m => m.RightAnglePushUpModel.RightAnglePushUps) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.RightAnglePushUpModel.RightAnglePushUps)</th>
-                    <th>@Html.DisplayNameFor(m => m.RightAnglePushUpModel.Logged)</th>
-                </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.RightAnglePushUpModel.RightAnglePushUps)</th>
+                <th>@Html.DisplayNameFor(m => m.RightAnglePushUpModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.RightAnglePushUp)
             {
@@ -130,4 +215,166 @@
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="rightAngleForm">
+            <h4>Right Angle Push Up</h4>
+            <hr/>
+            <div class="form-group">
+                <label class="control-label">Right Angle Push Up</label>
+                <input id="rightAngle" type="number" name="Weight" value="" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="rightAngleLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input id="rightAngleSubmit" type="submit" value="Submit" class="btn btn-default"/>
+            </div>
+        </form>
+    </div>
 </div>
+
+@section scripts
+{
+    <script>
+        $("#curlUpsSubmit")
+        .click(function (e) {
+            e.preventDefault(); // This breaks if this is not included, not sure why.
+            var source = {
+                'CurlUps': $("#curlUps").val(),
+                'Logged': $("#curlUpsLogged").val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/curlupsapi',
+                data: JSON.stringify(source),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            })
+                .complete(function ($data) {
+                    location.reload();
+                });
+        });
+
+        $("#flexedArmHangSubmit")
+        .click(function (e) {
+            e.preventDefault(); // This breaks if this is not included, not sure why.
+            var source = {
+                'FlexedArmHang': $("#flexedArmHang").val(),
+                'Logged': $("#flexedArmHangLogged").val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/flexedarmhangapi',
+                data: JSON.stringify(source),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            })
+                .complete(function ($data) {
+                    location.reload();
+                });
+        });
+
+        $("#maxBenchSubmit")
+        .click(function (e) {
+            e.preventDefault(); // This breaks if this is not included, not sure why.
+            var source = {
+                'MaxBench': $("#maxBench").val(),
+                'Logged': $("#maxBenchLogged").val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/maxbenchapi',
+                data: JSON.stringify(source),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            })
+                .complete(function ($data) {
+                    location.reload();
+                });
+        });
+
+        $("#maxLegSubmit")
+        .click(function (e) {
+            e.preventDefault(); // This breaks if this is not included, not sure why.
+            var source = {
+                'maxLegPress': $("#maxLeg").val(),
+                'Logged': $("#maxLegLogged").val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/maxlegpressapi',
+                data: JSON.stringify(source),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            })
+                .complete(function ($data) {
+                    location.reload();
+                });
+        });
+
+        $("#heightSubmit")
+        .click(function (e) {
+            e.preventDefault(); // This breaks if this is not included, not sure why.
+            var source = {
+                'Height': $("#height").val(),
+                'Logged': $("#heightLogged").val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/heightapi',
+                data: JSON.stringify(source),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            })
+                .complete(function ($data) {
+                    location.reload();
+                });
+        });
+
+        $("#pullUpForm")
+        .click(function (e) {
+            e.preventDefault(); // This breaks if this is not included, not sure why.
+            var source = {
+                'PullUp': $("#PullUps").val(),
+                'Logged': $("#pullUpsLogged").val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/pullupapi',
+                data: JSON.stringify(source),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            })
+                .complete(function ($data) {
+                    location.reload();
+                });
+        });
+
+        $("#rightAngleForm")
+        .click(function (e) {
+            e.preventDefault(); // This breaks if this is not included, not sure why.
+            var source = {
+                'RightAnglePushUps': $("#rightAngle").val(),
+                'Logged': $("#rightAngleLogged").val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'api/rightanglepushupapi',
+                data: JSON.stringify(source),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            })
+                .complete(function ($data) {
+                    location.reload();
+                });
+        });
+    </script>
+}

@@ -7,64 +7,226 @@
 <h2>Body Composition</h2>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(a => a.HeightModel.Height) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(a => a.HeightModel.Height)</th>
-                    <th>@Html.DisplayNameFor(a => a.HeightModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(a => a.HeightModel.Height)</th>
+                <th>@Html.DisplayNameFor(a => a.HeightModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.Height)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteHeight(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(h => item.Height)</td>
                     <td>@Html.DisplayFor(h => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="heightForm">
+            <h4>Height</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label ">Height (inches)</label>
+                <input id="height" type="number" name="Height" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="heightLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="heightSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(a => a.WeightModel.Weight) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(w => w.WeightModel.Weight)</th>
-                    <th>@Html.DisplayNameFor(w => w.WeightModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(w => w.WeightModel.Weight)</th>
+                <th>@Html.DisplayNameFor(w => w.WeightModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.Weight)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteWeight(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(w => item.Weight)</td>
                     <td>@Html.DisplayFor(w => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="weightForm">
+            <h4>Weight</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Weight (lb)</label>
+                <input id="weight" type="number" name="Weight" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="weightLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="weightSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(a => a.PercentBodyFatModel.BodyFat) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(b => b.PercentBodyFatModel.BodyFat)</th>
-                    <th>@Html.DisplayNameFor(b => b.PercentBodyFatModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(b => b.PercentBodyFatModel.BodyFat)</th>
+                <th>@Html.DisplayNameFor(b => b.PercentBodyFatModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.BodyFat)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteBodyFat(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(b => item.BodyFat)</td>
                     <td>@Html.DisplayFor(b => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="bodyFatForm">
+            <h4>Percent Body Fat</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Height (inches)</label>
+                <input id="bodyFat" type="number" name="BodyFat" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="bodyFatLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="bodyFatSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
+
+
+@section scripts
+{
+    <script>
+        function deleteHeight(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/heightapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        function deleteWeight(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/weightapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        function deleteBodyFat(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/bodyfatapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        $("#heightSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'Height': $("#height").val(),
+                    'Logged': $("#heightLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/heightapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+
+        $("#heightSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'Weight': $("#weight").val(),
+                    'Logged': $("#weightLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/weightapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+
+        $("#heightSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'BodyFat': $("#bodyFat").val(),
+                    'Logged': $("#bodyFatLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/bodyfatapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+    </script>
+}

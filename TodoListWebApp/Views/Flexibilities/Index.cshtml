@@ -11,40 +11,78 @@
         <h3>@Html.DisplayNameFor(m => m.ArmAndShoulderModel.ArmAndShoulder) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.ArmAndShoulderModel.ArmAndShoulder)</th>
-                    <th>@Html.DisplayNameFor(m => m.ArmAndShoulderModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(m => m.ArmAndShoulderModel.ArmAndShoulder)</th>
+                <th>@Html.DisplayNameFor(m => m.ArmAndShoulderModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.ArmAndShoulder)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteArmShoulders(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(m => item.ArmAndShoulder)</td>
                     <td>@Html.DisplayFor(m => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="armShoulderForm">
+            <h4>Arm & Shoulders</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Arm & Shoulders</label>
+                <input id="armShoulders" type="number" name="ArmShoulders" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="armShouldersLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="armShouldersSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <h3>@Html.DisplayNameFor(m => m.SitAndReachModel.SitAndReach) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.SitAndReachModel.SitAndReach)</th>
-                    <th>@Html.DisplayNameFor(m => m.SitAndReachModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(m => m.SitAndReachModel.SitAndReach)</th>
+                <th>@Html.DisplayNameFor(m => m.SitAndReachModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.SitAndReach)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteSitReach(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(m => item.SitAndReach)</td>
                     <td>@Html.DisplayFor(m => item.Logged)</td>
                 </tr>
             }
         </table>
+    </div>
+    <div class="col-md-6">
+        <form id="sitReachForm">
+            <h4>Sit & Reach</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label">Sit & Reach (cm)</label>
+                <input id="sitReach" type="number" name="SitReach" value="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="sitReachLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input id="sitReachSubmit" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </form>
     </div>
 </div>
 
@@ -53,18 +91,141 @@
         <h3>@Html.DisplayNameFor(m => m.TrunkLiftModel.TrunkLift) Data</h3>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>@Html.DisplayNameFor(m => m.TrunkLiftModel.TrunkLift)</th>
-                    <th>@Html.DisplayNameFor(m => m.TrunkLiftModel.Logged)</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>@Html.DisplayNameFor(m => m.TrunkLiftModel.TrunkLift)</th>
+                <th>@Html.DisplayNameFor(m => m.TrunkLiftModel.Logged)</th>
+            </tr>
             </thead>
             @foreach (var item in Model.TrunkLift)
             {
                 <tr>
+                    <td><a class="deleter" id="@item.ID" onclick="deleteTrunkLift(this)" href="#">X</a></td>
                     <td>@Html.DisplayFor(m => item.TrunkLift)</td>
                     <td>@Html.DisplayFor(m => item.Logged)</td>
                 </tr>
             }
         </table>
     </div>
+    <div class="col-md-6">
+        <form id="trunkForm">
+            <h4>Trunk Lift</h4>
+            <hr/>
+            <div class="form-group">
+                <label class="control-label">Trunk Lift</label>
+                <input id="trunkLift" type="number" name="TrunkLift" value="" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Logged</label>
+                <input id="trunkLiftLogged" name="Logged" type="datetime" value="@DateTime.UtcNow.ToLocalTime()" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input id="trunkLiftSubmit" type="submit" value="Submit" class="btn btn-default"/>
+            </div>
+        </form>
+    </div>
 </div>
+
+@section scripts
+{
+    <script>
+        function deleteArmShoulders(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/armandshouldersapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        function deleteSitReach(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/sitandreachapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        function deleteTrunkLift(e) {
+            //e.preventDefault(); // This breaks if this is not included, not sure why.
+            //alert(e.id);
+            $.ajax({
+                type: 'DELETE',
+                url: 'api/trunkliftapi/' + e.id
+
+            })
+            .complete(function ($data) {
+                location.reload();
+            });
+        }
+
+        $("#armShouldersSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'ArmAndShoulder': $("#armShoulders").val(),
+                    'Logged': $("#armShouldersLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/armandshouldersapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+
+        $("#sitReachSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'SitAndReach': $("#sitReach").val(),
+                    'Logged': $("#sitReachLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/sitandreachapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+
+        $("#trunkLiftSubmit")
+            .click(function (e) {
+                e.preventDefault(); // This breaks if this is not included, not sure why.
+                var source = {
+                    'TrunkLift': $("#trunkLift").val(),
+                    'Logged': $("#trunkLiftLogged").val()
+                };
+
+                $.ajax({
+                        type: 'POST',
+                        url: 'api/trunkliftapi',
+                        data: JSON.stringify(source),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json'
+                    })
+                    .complete(function ($data) {
+                        location.reload();
+                    });
+            });
+    </script>
+}
