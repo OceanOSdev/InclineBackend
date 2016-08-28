@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace TodoListWebApp.Controllers
 {
+    //TODO: possibly make this useful
     // controller that handles the onboarding of new tenants and new individual users
     // operates by starting an OAuth2 request on behalf of the user
     // during that request, the user is asked whether he/she consent for the app to gain access to the specified directory permissions.    
@@ -27,6 +28,7 @@ namespace TodoListWebApp.Controllers
         }
 
         // POST: /Onboarding/SignUp
+        //TODO: possibly make this useful
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignUp([Bind(Include="ID,Name,AdminConsented")] Tenant tenant)
@@ -57,6 +59,7 @@ namespace TodoListWebApp.Controllers
         }
 
          // GET: /TOnboarding/ProcessCode
+         //TODO: possibly make this useful
         public ActionResult ProcessCode(string code, string error, string error_description, string resource, string state)
         {
             // Is this a response to a request we generated? Let's see if the state is carrying an ID we previously saved
