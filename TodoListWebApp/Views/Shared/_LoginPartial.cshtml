@@ -1,22 +1,33 @@
-﻿@if (Request.IsAuthenticated)
-{
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+﻿@*@if (Request.IsAuthenticated)
     {
-        @Html.AntiForgeryToken()
+        using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
 
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.Name + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li>@Html.ActionLink("Sign out", "SignOut", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+            </ul>
+        }
+    }
+    else
+    {
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Hello " + User.Identity.Name + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li>@Html.ActionLink("Sign out", "SignOut", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+            <li>@Html.ActionLink("Sign Up", "SignUp", "Onboarding")</li>
+            <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "logoutLink" })</li>
         </ul>
     }
+*@
+
+@if (Request.IsAuthenticated)
+{
+    <li>@Html.ActionLink("Sign Out", "SignOut", "Account", routeValues: null, htmlAttributes: new { id = "no-rp", @class = "link sign-in" })</li>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-
-        <li>@Html.ActionLink("Sign Up", "SignUp", "Onboarding")</li>
-        <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "logoutLink" })</li>
-    </ul>
+    <li>@Html.ActionLink("Sign In", "SignIn", "Account", routeValues: null, htmlAttributes: new {id = "no-rp", @class="link sign-in"})</li>
+    
 }

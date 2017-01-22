@@ -1,54 +1,145 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Incline Fitness</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Incline Fitness", "Index", "Home", null, new { @class = "navbar-brand" })
-                
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Api Help", "Index", "Help")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li role="presentation" class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Health Related <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Body Composition", "Index", "BodyComposition")</li>
-                            <li>@Html.ActionLink("Cardiovascular Fitness", "Index", "CardiovascularFitness")</li>
-                            <li>@Html.ActionLink("Flexibility", "Index", "Flexibilities")</li>
-                            <li>@Html.ActionLink("Muscular Strength and Endurance", "Index", "MuscularStrengthAndEndurance")</li>
-                        </ul>
-                    </li>
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Incline Fitness</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Incline Fitness", "Index", "Home", null, new { @class = "navbar-brand" })
 
-                </ul>
-                @Html.Partial("_LoginPartial")
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Api Help", "Index", "Help")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Health Related <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Body Composition", "Index", "BodyComposition")</li>
+                                <li>@Html.ActionLink("Cardiovascular Fitness", "Index", "CardiovascularFitness")</li>
+                                <li>@Html.ActionLink("Flexibility", "Index", "Flexibilities")</li>
+                                <li>@Html.ActionLink("Muscular Strength and Endurance", "Index", "MuscularStrengthAndEndurance")</li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Isophex LLC.</p>
-        </footer>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Isophex LLC.</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>
+*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    @*<link rel="stylesheet" href="css/unslider.css">
+        <link rel="stylesheet" href="css/main-min.css">*@
+
+    <title>@ViewBag.Title -Incline Fitness</title>
+    @Styles.Render("~/Content/css")
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" />
+    @*Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <nav class="mobile-nav" role="navigation">
+        <ul>
+            <li id="bt"><a href="@Url.Action("Team","Home")"><span>team</span></a></li>
+            <li><a href="@Url.Action("Technology", "Home")"><span>technology</span></a></li>
+            <li><a href="#"><span>future</span></a></li>
+            <li id="signin-mobile"><a href="#"><span>sign up</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="main-header-wrapper">
+        <nav class="main-header">
+            <a class="brand" id="no-lp" href=@Url.Action("Index","Home")><img class="logo-svg" src="~/img/logo.svg" /></a>
+            <ul class="main-nav">
+                <li><a href="@Url.Action("Team","Home")" class="link">team</a></li>
+                @*<li>@Html.ActionLink("Team", "Team", "Home", new { area = ""} , new {@class = "link"})</li>*@
+                <li><a href="@Url.Action("Technology", "Home")" class="link">technology</a></li>
+                @*<li>@Html.ActionLink("Technology", "Technology", "Home", new { area = "" }, new { @class = "link" })</li>*@
+                <li><a href="#" class="link">future</a></li>
+                @Html.Partial("_LoginPartial")
+            </ul>
+            <button class="hamburger hamburger--spring" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </nav>
     </div>
 
+    <div class="row" id="intro-row">
+
+        <section class="intro-section">
+            @RenderSection("IntroRow", false)
+        </section>
+        <div class="overlay">
+        </div>
+        <div class="video-wrapper">
+            <img class="video-replace" src="~/img/video-replace.jpg" />
+            <video autoplay="autoplay" loop="loop" muted="muted">
+                <source data-src="~/img/video.mp4" type="video/mp4" src="~/img/video.mp4" />
+            </video>
+        </div>
+
+    </div>
+
+    @RenderBody()
+
+    <div class="main-footer-wrapper">
+        <footer class="main-footer">
+            <span><p class="small muted text-left">&copy; @DateTime.Now.Year - Isophex LLC</p></span>
+            <ul class="footer-icons">
+                <a href="#">
+                    <li>
+                        <svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#FFFFFF" d="M 16.8313 4.1875 C 16.2196 4.4609 15.5624 4.645 14.8726 4.728 C 15.5767 4.3037 16.1173 3.6309 16.3719 2.8291 C 15.7131 3.2227 14.9833 3.5078 14.2064 3.6621 C 13.5844 2.9951 12.698 2.5776 11.717 2.5776 C 9.8336 2.5776 8.3069 4.1143 8.3069 6.0107 C 8.3069 6.2803 8.3369 6.542 8.395 6.7935 C 5.5608 6.6504 3.0479 5.2832 1.3657 3.2061 C 1.0723 3.7134 0.9041 4.3027 0.9041 4.9326 C 0.9041 6.123 1.5062 7.1738 2.4213 7.79 C 1.8622 7.7725 1.3364 7.6182 0.8767 7.3604 C 0.8762 7.375 0.8762 7.3896 0.8762 7.4038 C 0.8762 9.0674 2.0519 10.4551 3.6119 10.77 C 3.3257 10.8491 3.0245 10.8906 2.7135 10.8906 C 2.4937 10.8906 2.2802 10.8691 2.0719 10.8291 C 2.5059 12.1934 3.7653 13.1855 5.2576 13.2139 C 4.0905 14.1348 2.62 14.6831 1.0221 14.6831 C 0.7469 14.6831 0.4756 14.667 0.2086 14.6353 C 1.718 15.6094 3.5105 16.1777 5.4364 16.1777 C 11.7092 16.1777 15.1394 10.9463 15.1394 6.4092 C 15.1394 6.2607 15.1361 6.1123 15.1295 5.9648 C 15.7958 5.4805 16.374 4.876 16.8313 4.1875 Z"></path>
+                        </svg>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#FFFFFF" d="M 10.7169 3.4766 L 12.8542 3.4766 L 12.8542 0.311 L 10.3422 0.311 L 10.3422 0.3232 C 7.2998 0.4282 6.6744 2.1455 6.6199 3.9468 L 6.6135 3.9468 L 6.6135 5.5254 L 4.5431 5.5254 L 4.5431 8.626 L 6.6135 8.626 L 6.6135 16.9336 L 9.7393 16.9336 L 9.7393 8.626 L 12.2979 8.626 L 12.7897 5.5254 L 9.7393 5.5254 L 9.7393 4.5723 C 9.7393 3.9634 10.1421 3.4766 10.7169 3.4766 Z"></path>
+                        </svg>
+                    </li>
+                </a>
+            </ul>
+            <span><p class="small muted text-right">Created by: Jake Schroeder</p></span>
+        </footer>
+    </div>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/misc")
+    @Scripts.Render("~/bundles/function")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>

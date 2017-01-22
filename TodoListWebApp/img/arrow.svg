@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37.7" height="27.7" viewBox="0 0 37.7 27.7">
+  <title>
+    arrow
+  </title>
+  <line x1="0.5" y1="13.8" x2="37.2" y2="13.8" fill="#fff" stroke="#231f20" stroke-linecap="round" stroke-miterlimit="10"/>
+  <line x1="37.2" y1="13.8" x2="23.8" y2="27.2" fill="#fff" stroke="#231f20" stroke-linecap="round" stroke-miterlimit="10"/>
+  <line x1="37.2" y1="13.8" x2="23.8" y2="0.5" fill="#fff" stroke="#231f20" stroke-linecap="round" stroke-miterlimit="10"/>
+</svg>

@@ -1,34 +1,215 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
+@section IntroRow
+{
+    <h1>Incline Fitness</h1>
+    <h3>Created by High School students for High School students.</h3>
+    <div class="secondary-header-wrapper">
+        <nav class="secondary-header" id="smallnav">
+            <ul class="secondary-nav">
+                <li><a class="secondary-link active" href="#whatAnchor">What</a></li>
+                <li><a class="secondary-link" href="#whyAnchor">Why</a></li>
+                <li><a class="secondary-link" href="#howAnchor">How</a></li>
+            </ul>
+        </nav>
+    </div>
+}
+<div class="row" id="what-row">
+    <section class="what-section">
+        <!-- <a id="myAnchor"> -->
+        <h2><a id="whatAnchor">What is it?</a></h2>
+        <!-- </a> -->
+        <p>
+            First and foremost <span class="color-text">Incline Fitness</span> is an application built to enter and analyze Presidential Fitness data. It was built by high school students for high school students and aims to provide a simple solution
+            to a complex problem.
+        </p>
+        <img class="diagram" src="~/img/phones-diagram.png" />
+        <p>
+            <span class="color-text">Incline Fitness</span> provides a completely free solution to every elementary and high school in Illinois. This solution comes packaged with the means to enter data through a mobile application and to generate
+            reports through a web application.
+        </p>
+        <button class="button" type="button" name="button" onclick="location.href='@Url.Action("Contact","Home")'">
+            Read More
+        </button>
 
-<div class="jumbotron">
-    <h1>Incline</h1>
-    <p class="lead">Incline is a new service to help with tracking fitness progress for schools and companies.</p>
-    <p><a href="" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    </section>
+</div>
+<div class="row">
+    <section class="why-section" id="why-section">
+        <div class="width-wrapper">
+            <h2 id="mt"><a id="whyAnchor">Why use it?</a></h2>
+            <p>
+                Thats a fair question, we think you should use <span class="color-text">Incline Fitness</span> because we believe it is exactly the solution you are looking for.
+            </p>
+        </div>
+
+        <div class="icon-list">
+            <div class="col col-1">
+                <div class="icon">
+                    <svg id="lock-icon" class="lock-icon" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#1b98e0" stroke-width="6" stroke-miterlimit="10" stroke-linecap="square" />
+                        <path fill="none" stroke="#1b98e0" stroke-width="3" stroke-miterlimit="10" d="M131.4 90.3h-7.8V69.8a23.6 23.6 0 0 0-47.2 0v20.5h-7.8a7.8 7.8 0 0 0-7.8 7.8v48a7.8 7.8 0 0 0 7.8 7.8h62.8a7.8 7.8 0 0 0 7.8-7.8v-48a7.8 7.8 0 0 0-7.8-7.8zm-24 32.5v9.6a7.4 7.4 0 0 1-14.7 0v-9.6a10.7 10.7 0 1 1 14.7 0zM83.7 71.1c0-9.6 7.3-17.3 16.3-17.3s16.3 7.8 16.3 17.3v19.3H83.7z" />
+                        <path fill="none" stroke="#1b98e0" stroke-width="5" stroke-miterlimit="10" d="M110.7 115a10.7 10.7 0 0 1-3.3 7.8v9.6a7.4 7.4 0 0 1-14.7 0v-9.6a10.7 10.7 0 1 1 18.1-7.8z" />
+                    </svg>
+
+
+                </div>
+                <div class="content">
+                    <h2>Accessability </h2>
+                    <p>
+                        <span class="color-text">Incline Fitness</span> is completely accessable, meaning that no matter what platform you are on. You can enter and analyze data. See out web app and IOS app for more details.
+                    </p>
+                </div>
+            </div>
+            <div class="col col-2">
+                <div class="icon">
+                    <svg id="cash-icon" class="cash-icon" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#1b98e0" stroke-width="6" stroke-miterlimit="10" stroke-linecap="square" />
+                        <path fill="none" stroke="#1b98e0" stroke-width="3" d="M105 92.9c-13.3-5.4-19-9.4-19-17.3 0-6.1 4.4-13.1 16.2-13.1a37 37 0 0 1 19.2 5.2l3.8-10c-4.4-2.6-10.7-5-19.9-5.3V37.7H96V53c-14 2.3-23.1 11.8-23.1 24.4s9.6 20.2 25.2 26.3c11.3 4.5 17.3 9.7 17.3 18.1s-7.3 14.9-18.2 14.9a40.9 40.9 0 0 1-22-6.5l-3.7 10.2c5.3 3.8 14.5 6.5 23.4 6.7v15.3h9.6v-15.9c15.7-2.6 24.1-13.8 24.1-25.8 0-13.5-7.9-21.4-23.6-27.8z" />
+                    </svg>
+
+
+                </div>
+                <div class="content">
+                    <h2>Cost</h2>
+                    <p>
+                        Its simple enough, <span class="color-text">Incline Fitness</span> is free. Its a free service, without sacrificing performance.
+                    </p>
+                </div>
+            </div>
+            <div class="col col-3">
+                <div class="icon">
+                    <svg id="gear-icon" class="gear-icon" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#1b98e0" stroke-width="6" stroke-miterlimit="10" stroke-linecap="square" />
+                        <path fill="none" stroke="#1b98e0" stroke-width="3" stroke-miterlimit="10" d="M149.6 87.7h-10.4a4 4 0 0 1-2.8-6.8l7.3-7.3a5.7 5.7 0 0 0 0-8.1l-9.3-9.3a5.8 5.8 0 0 0-8.1 0l-7.3 7.3a4 4 0 0 1-6.8-2.8V50.4a5.7 5.7 0 0 0-5.7-5.7H93.4a5.7 5.7 0 0 0-5.7 5.7v10.4a4 4 0 0 1-6.8 2.8l-7.3-7.3a5.8 5.8 0 0 0-8.1 0l-9.3 9.3a5.7 5.7 0 0 0 0 8.1l7.3 7.3a4 4 0 0 1-2.8 6.8H50.4a5.7 5.7 0 0 0-5.7 5.7v13.2a5.7 5.7 0 0 0 5.7 5.7h10.4a4 4 0 0 1 2.8 6.8l-7.3 7.3a5.7 5.7 0 0 0 0 8.1l9.3 9.3a5.8 5.8 0 0 0 8.1 0l7.3-7.3a4 4 0 0 1 6.8 2.8v10.3a5.7 5.7 0 0 0 5.7 5.7h13.2a5.7 5.7 0 0 0 5.7-5.7v-10.5a4 4 0 0 1 6.8-2.8l7.3 7.3a5.8 5.8 0 0 0 8 0l9.3-9.3a5.7 5.7 0 0 0 0-8.1l-7.3-7.3a4 4 0 0 1 2.8-6.8h10.4a5.7 5.7 0 0 0 5.7-5.7V93.4a5.7 5.7 0 0 0-5.8-5.7zM114.3 100A14.3 14.3 0 1 1 100 85.7a14.3 14.3 0 0 1 14.3 14.3z" />
+                    </svg>
+                </div>
+                <div class="content">
+                    <h2>Usability</h2>
+                    <p>
+                        <span class="color-text">Incline Fitness</span> was developed by high school students, for high school students. This ensures the user experience is streamlined and free of unnecessary bloat.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
+<div class="row" id="how-row">
+    <section class="how-section">
+        <h2><a id="howAnchor">How Does it Work?</a></h2>
+        <p>
+            <span class="color-text">Incline Fitness</span> works by allowing students to enter data: faster, more frequently and more accurately. The app connects to a database, effectively storing all students data. The web app allows teachers
+            to view the student data and generate useful reports, comparing and visualizing the student fitness data.
+        </p>
+        <div class="my-slider">
+            <ul>
+                <li>
+                    <div class="slide-image-wrapper">
+                        <img class="iphone-icon" src="~/img/iphone.svg" alt="">
+                    </div>
+
+                    <h2>
+                        Step 1
+                        <span class="arrow">
+                            <svg id="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="37.7" height="27.7" viewBox="0 0 37.7 27.7">
+                                <title>
+                                    arrow
+                                </title>
+                                <line x1="0.5" y1="13.8" x2="37.2" y2="13.8" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                                <line x1="37.2" y1="13.8" x2="23.8" y2="27.2" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                                <line x1="37.2" y1="13.8" x2="23.8" y2="0.5" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                            </svg>
+                        </span>
+                    </h2>
+                    <h3>Students Enter Fitness Tests</h3>
+                    <p>
+                        Students complete Presidential Fitness tests as assigned by their P.E. department. After a student completes a test, they can open the Incline Fitness mobile app and login using their school office 365 account. After a student has logged in, they can navigate to the test’s specific location within the app interface and enter the test result.
+                    </p>
+                    <p id="swipe-info" class="muted">
+                        <em>swipe right to see more</em>
+                    </p>
+                </li>
+                <li>
+                    <div class="slide-image-wrapper">
+                        <img class="laptop-icon" src="~/img/laptop.svg" alt="">
+                    </div>
+                    <h2>
+                        Step 2
+                        <span class="arrow">
+                            <svg id="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="37.7" height="27.7" viewBox="0 0 37.7 27.7">
+                                <title>
+                                    arrow
+                                </title>
+                                <line x1="0.5" y1="13.8" x2="37.2" y2="13.8" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                                <line x1="37.2" y1="13.8" x2="23.8" y2="27.2" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                                <line x1="37.2" y1="13.8" x2="23.8" y2="0.5" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                            </svg>
+                        </span>
+                    </h2>
+                    <h3>Teachers Evaluate Student Data</h3>
+                    <p>
+                        After a student enters data, it gets sent to a database on the cloud. From their it is piped into our priority web app dashboard, (Incline Fitness Web) it allows teachers to create classes and add students to those classes. After a teacher has set up their class, they can utilize the analytics tools to compare and contrast student test scores.
+                    <p id="swipe-info" class="muted">
+                        <em>swipe right to see more</em>
+                    </p>
+                </li>
+                <li>
+                    <div class="slide-image-wrapper">
+                        <img class="laptop-icon" src="~/img/desktop.svg">
+                    </div>
+                    <h2>
+                        Step 3
+                        <span class="arrow">
+                            <svg id="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="37.7" height="27.7" viewBox="0 0 37.7 27.7">
+                                <title>
+                                    arrow
+                                </title>
+                                <line x1="0.5" y1="13.8" x2="37.2" y2="13.8" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                                <line x1="37.2" y1="13.8" x2="23.8" y2="27.2" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                                <line x1="37.2" y1="13.8" x2="23.8" y2="0.5" fill="none" stroke="#231f20" stroke-linecap="round" stroke-width="2" stroke-miterlimit="10" />
+                            </svg>
+                        </span>
+                    </h2>
+                    <h3>Students See Progress</h3>
+                    <p>
+                        Once a teacher creates a class and generates a report for each student. A notification is sent to that student, letting him or her know that their progress report has been generated and that they can login to their Incline Fitness Web account to see it. From this point the report can be printed, emailed, or exported in csv for use in Microsoft Excel.
+                    </p>
+                    <p id="swipe-info" class="muted">
+                        <em>swipe right to go back</em>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+    </section>
+</div>
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
+    <section class="sub-section">
+        <h1>Ok Im Sold, Show Me.</h1>
+        <div class="mail-icon">
+            <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+            <svg class="airplane-icon" width="68px" height="55px" viewBox="0 0 68 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                <g id="Intro-Site" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                    <g id="Mobile-Portrait" sketch:type="MSArtboardGroup" transform="translate(-126.000000, -2730.000000)" fill="#1B98E0">
+                        <g id="Airplane" sketch:type="MSLayerGroup" transform="translate(126.000000, 2730.000000)">
+                            <path d="M68.0004,0.0361 L0.0004,23.0351 L24.1224,33.9631 L65.4164,3.6571 L34.9524,37.0741 L56.9994,49.5361 L68.0004,0.0361 Z" id="Fill-1" sketch:type="MSShapeGroup"></path>
+                            <path d="M23.2569,55 L36.4999,44.581 L23.2569,37.822 L23.2569,55 Z" id="Fill-2" sketch:type="MSShapeGroup"></path>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
         <p>
-            Incline gives you a powerful way to moniter your students' and employees' fitness that
-            enables your school/company to grow.
+            At this time, <span class="color-text">Incline Fitness</span> is still being developed. However, you can sign up to be notified when the entire solution is avaliable.
         </p>
-        <p><a class="btn btn-default" href="">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>Reading is fun.</p>
-        <p><a class="btn btn-default" href="">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>On the Web and on Your Device</h2>
-        <p>
-            You can easily view your organization's progress from the web and from your phone.
-            Your employees/students are also able to view and update their progress from the
-            web and their phone.
-        </p>
-        <p><a class="btn btn-default" href="">Learn more &raquo;</a></p>
-    </div>
+        <form class="input-form" action="#" method="post">
+            <input class="email" type="text" name="email" value="" placeholder="jakeman@gmail.com">
+            <input class="send-button" type="submit" name="send" value="Submit">
+        </form>
+    </section>
 </div>
