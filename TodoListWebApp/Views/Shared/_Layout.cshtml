@@ -85,7 +85,7 @@
                 @*<li>@Html.ActionLink("Team", "Team", "Home", new { area = ""} , new {@class = "link"})</li>*@
                 <li><a href="@Url.Action("Technology", "Home")" class="link">technology</a></li>
                 @*<li>@Html.ActionLink("Technology", "Technology", "Home", new { area = "" }, new { @class = "link" })</li>*@
-                <li><a href="#" class="link">future</a></li>
+                <li><a href="@Url.Action("Future", "Home")" class="link">future</a></li>
                 @Html.Partial("_LoginPartial")
             </ul>
             <button class="hamburger hamburger--spring" type="button">
