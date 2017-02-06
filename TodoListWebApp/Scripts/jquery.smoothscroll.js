@@ -1,6 +1,6 @@
 /*! http://mths.be/smoothscroll v1.5.2 by @mathias */
 var navbar = $('.nav-header-wrapper').height();
-;(function(document, $) {
+(function(document, $) {
 
 	var $scrollElement = (function() {
 	    // Find out what to scroll (html or body)

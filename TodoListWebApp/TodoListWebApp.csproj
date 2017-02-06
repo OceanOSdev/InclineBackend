@@ -335,27 +335,41 @@
     <None Include="Properties\PublishProfiles\vibro - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="img\airplane.svg" />
+    <Content Include="img\apple.svg" />
     <Content Include="img\arrow-rev.svg" />
     <Content Include="img\arrow.svg" />
+    <Content Include="img\asp.svg" />
+    <Content Include="img\atom.svg" />
+    <Content Include="img\azure.svg" />
+    <Content Include="img\bi.svg" />
     <Content Include="img\cash.svg" />
     <Content Include="img\checkmark.svg" />
+    <Content Include="img\csharp.svg" />
     <Content Include="img\css.svg" />
     <Content Include="img\desktop.svg" />
     <Content Include="img\facebook.svg" />
     <Content Include="img\faceicon.svg" />
+    <Content Include="img\favicon.jpg" />
+    <Content Include="img\favicon.png" />
+    <Content Include="img\github.svg" />
     <Content Include="img\html.svg" />
     <Content Include="img\illustrator.svg" />
     <Content Include="img\img_fjords.jpg" />
     <Content Include="img\invision.svg" />
     <Content Include="img\iphone.svg" />
+    <Content Include="img\jQuery.svg" />
     <Content Include="img\key.svg" />
     <Content Include="img\laptop.svg" />
     <Content Include="img\logo.svg" />
     <Content Include="img\logo.svg.svg" />
+    <Content Include="img\lths.png" />
     <Content Include="img\phones-diagram.png" />
     <Content Include="img\photoshop.svg" />
     <Content Include="img\Premiere.svg" />
     <Content Include="img\sketch.svg" />
+    <Content Include="img\studio.svg" />
+    <Content Include="img\swift.svg" />
+    <Content Include="img\teamservices.svg" />
     <Content Include="img\twitter.svg" />
     <Content Include="img\video-replace.jpg" />
     <Content Include="img\video.mp4" />
@@ -364,6 +378,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\detectmobilebrowser.js" />
+    <Content Include="Scripts\future-function.js" />
     <Content Include="Scripts\index-function.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
@@ -432,6 +447,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Team.cshtml" />
     <Content Include="Views\Home\Technology.cshtml" />
+    <Content Include="Views\Home\Future.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201407162351183_InitialCreate.resx">

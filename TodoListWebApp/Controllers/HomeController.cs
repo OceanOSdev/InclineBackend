@@ -33,5 +33,10 @@ namespace TodoListWebApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Future()
+        {
+            return View();
+        }
     }
 }

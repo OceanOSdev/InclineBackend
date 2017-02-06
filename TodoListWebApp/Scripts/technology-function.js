@@ -11,7 +11,7 @@ $(document).ready(function(){
   $(window).resize(function() {
 
     var scrollTop = $(window).scrollTop();
-    var elementOffset = $('#smallnav').offset().top - 59;
+    var elementOffset = $('.secondary-header').offset().top - 59;
 
     affixOffset = (elementOffset - scrollTop);
 

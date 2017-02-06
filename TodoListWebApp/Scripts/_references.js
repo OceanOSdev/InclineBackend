@@ -2,6 +2,7 @@
 /// <reference path="about-function.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="detectmobilebrowser.js" />
+/// <reference path="future-function.js" />
 /// <reference path="index-function.js" />
 /// <reference path="jquery.min.js" />
 /// <reference path="jquery.mixitup.min.js" />

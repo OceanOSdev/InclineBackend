@@ -19,13 +19,15 @@ namespace TodoListWebApp
                 "~/Scripts/swipe.js",
                 "~/Scripts/unslider-min.js",
                 "~/Scripts/detectmobilebrowser.js",
-                "~/Scripts/vivus.min.js"));
+                "~/Scripts/vivus.min.js",
+                "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/function").Include(
                 "~/Scripts/team-function.js",
                 "~/Scripts/technology-function.js",
                 "~/Scripts/about-function.js",
-                "~/Scripts/index-function.js"));
+                "~/Scripts/index-function.js",
+                "~/Scripts/future-function.js"));
 
 
 
